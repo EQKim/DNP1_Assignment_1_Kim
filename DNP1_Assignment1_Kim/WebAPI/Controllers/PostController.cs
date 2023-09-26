@@ -9,17 +9,43 @@ namespace WebAPI.Controllers;
 public class PostController : ControllerBase
 {
     private static readonly List<Post> Posts = new List<Post>();
-
-
-    //GETTER
+    
+    
+    //Getter
     [HttpGet]
     public ActionResult<IEnumerable<Post>> GetPosts()
-    {
-        return Posts;
+    {   
+        //Fields 
+        var foldername = "JSON_Storage";
+        var posts = new List<Post>();
+        
+        //Guard
+        if (Directory.Exists(foldername))
+        {
+            var files = Directory.GetFiles(foldername, "*.json");
+            foreach (var file in files)
+            {
+                try
+                {
+                    var json = System.IO.File.ReadAllText(file);
+                    var post = JsonSerializer.Deserialize<Post>(json);
+                    posts.Add(post);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    throw;
+                }
+            }
+        }
+
+        return posts;
     }
 
 
-    //Create-Post
+    
+    
+    //Create
     [HttpPost]
     public async Task<ActionResult<Post>> CreatePost([FromBody] Post newPost)
     {
@@ -27,10 +53,21 @@ public class PostController : ControllerBase
         Posts.Add(newPost);
         var foldername = "JSON_Storage";
         
-        //Guard
+        
+        //Guards
         if (!Directory.Exists("JSON_Storage"))
         {
             Directory.CreateDirectory(foldername);
+        }
+        
+        if (string.IsNullOrEmpty(newPost.description))
+        {
+            throw new Exception("Your description cant be empty");
+        }
+        
+        if (string.IsNullOrEmpty(newPost.title))
+        {
+            throw new Exception("Your title cant be empty");
         }
         
         

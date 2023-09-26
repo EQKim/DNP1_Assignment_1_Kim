@@ -31,3 +31,5 @@ C:\Users\karee\OneDrive\Desktop\Git Assignment_1 DNP1\DNP1_Assignment_1_Kim\DNP1
 C:\Users\karee\OneDrive\Desktop\Git Assignment_1 DNP1\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\obj\Debug\net7.0\WebAPI.pdb
 C:\Users\karee\OneDrive\Desktop\Git Assignment_1 DNP1\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\obj\Debug\net7.0\WebAPI.genruntimeconfig.cache
 C:\Users\karee\OneDrive\Desktop\Git Assignment_1 DNP1\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\obj\Debug\net7.0\ref\WebAPI.dll
+C:\Users\karee\OneDrive\Desktop\Git Assignment_1 DNP1\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\JSON_Storage\Post_1.json
+C:\Users\karee\OneDrive\Desktop\Git Assignment_1 DNP1\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\JSON_Storage\UserKim.json
