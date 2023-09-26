@@ -40,7 +40,7 @@ public class UserController : ControllerBase
 
 
 
-
+    //Create
     [HttpPost]
     public async Task<ActionResult<User>> CreateUser([FromBody] User newUser)
     {

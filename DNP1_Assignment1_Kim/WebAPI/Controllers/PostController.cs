@@ -81,11 +81,12 @@ public class PostController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Post>> CreatePost([FromBody] Post newPost)
     {
+        //Revised maybe? --------------
         newPost.ID = Posts.Count + 1;
         Posts.Add(newPost);
+        //-----------------------------
         var foldername = "JSON_Storage";
-
-
+        
         //Guards
         if (!Directory.Exists("JSON_Storage"))
         {
