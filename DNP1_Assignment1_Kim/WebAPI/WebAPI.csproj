@@ -12,8 +12,9 @@
     </ItemGroup>
 
 
+
     <ItemGroup>
-      <Folder Include="Pages\" />
+      <Folder Include="JSON_Storage\" />
     </ItemGroup>
 
 </Project>
