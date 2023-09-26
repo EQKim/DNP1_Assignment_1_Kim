@@ -78,7 +78,7 @@ public class PostController : ControllerBase
 
 
     //Create
-    [HttpPost]
+    [HttpPost("CreatePost")]
     public async Task<ActionResult<Post>> CreatePost([FromBody] Post newPost)
     {
         //Revised maybe? --------------

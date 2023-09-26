@@ -41,7 +41,7 @@ public class UserController : ControllerBase
 
 
     //Create
-    [HttpPost]
+    [HttpPost("CreateAccount")]
     public async Task<ActionResult<User>> CreateUser([FromBody] User newUser)
     {
         var folderName = "JSON_Storage";
