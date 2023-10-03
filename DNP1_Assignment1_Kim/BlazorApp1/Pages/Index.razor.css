@@ -1,0 +1,15 @@
+
+.welcome-box {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 2px 2px 12px #aaa;
+    border-radius: 8px;
+    width: 300px;
+}
+
+.welcome-box a 
+{
+    color: blue;
+    text-decoration: underline;
+}
