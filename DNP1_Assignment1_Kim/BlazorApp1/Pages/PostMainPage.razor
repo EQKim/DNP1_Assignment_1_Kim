@@ -24,7 +24,16 @@ else
     {
         <div class="post-container">
             <h4>@post.title</h4>
-            <p>@post.context</p>
+            
+            @if (IsGifUrl(post.context))
+            {
+                <img src="@post.context" alt="GIF Content" style="max-width:100%; height:auto;"/>
+            }
+            else
+            {
+                <p>@post.context</p>
+            }
+
             <button @onclick="() => LoadComments(post)">See Comments</button>
             <!-- Placeholder for displaying comments -->
             @if (post.Comments != null && post.Comments.Any())
@@ -88,6 +97,15 @@ else
                 }
             }
         }
+    }
+
+    private bool IsGifUrl(string context)
+    {
+        if (string.IsNullOrWhiteSpace(context))
+        {
+            return false;
+        }
+        return (context.StartsWith("http://") || context.StartsWith("https://")) && context.EndsWith(".gif");
     }
 
     private void LoadComments(Post post)
