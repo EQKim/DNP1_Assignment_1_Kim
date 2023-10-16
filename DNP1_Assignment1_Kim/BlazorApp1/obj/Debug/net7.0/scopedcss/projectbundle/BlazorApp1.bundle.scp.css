@@ -128,6 +128,14 @@ button[b-480z8q4hvn] {
 button:hover[b-480z8q4hvn] {
     background-color: #005a9b;
 }
+/* _content/BlazorApp1/Pages/PostMainPage.razor.rz.scp.css */
+.post-container[b-318081eyz9] {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 /* _content/BlazorApp1/Shared/MainLayout.razor.rz.scp.css */
 .page[b-45rkf8v3vv] {
     position: relative;

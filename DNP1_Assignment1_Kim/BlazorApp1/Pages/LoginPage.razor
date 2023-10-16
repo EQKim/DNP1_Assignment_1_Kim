@@ -1,33 +1,60 @@
 @page "/LoginPage"
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager NavigationManager
+
 
 <div class="full-page">
     <div class="login-container">
         <h3 style="font-weight: bold">Login</h3>
         <div>
             <label for="username">Username:</label>
-            <input type="text" id="username"/>
+            <input type="text" id="username" @bind="Username"/>
         </div>
         <div>
             <label for="password">Password:</label>
-            <input type="password" id="password"/>
+            <input type="password" id="password" @bind="Password"/>
         </div>
         <div>
-            <button style="font-weight: bold">Login</button>
+            <button style="font-weight: bold" @onclick="Login">Login</button>
         </div>
+        @if(!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <p style="color: red;">@ErrorMessage</p>
+        }
     </div>
 </div>
 
 @code {
-    // Your LoginPage logic here
-}
-
-
-@code {
     string Username { get; set; }
     string Password { get; set; }
+    string ErrorMessage { get; set; }
 
-    private void Login()
+    private async Task Login()
     {
-    // Your login logic here
+        var client = HttpClientFactory.CreateClient("NoSSL");
+
+        var loginRequest = new 
+        {
+            Username = this.Username,
+            Password = this.Password
+        };
+
+        var response = await client.PostAsJsonAsync("User/login", loginRequest);
+
+        if (response.IsSuccessStatusCode)
+        {
+            // Handle successful login (e.g., navigate to another page, save user details to a session, etc.)
+            ErrorMessage = "";
+            // For instance, to navigate to another page you might use:
+            // NavigationManager.NavigateTo("/somepage");
+        }
+        else if(response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        {
+            ErrorMessage = "Invalid username or password.";
+        }
+        else
+        {
+            ErrorMessage = "An unexpected error occurred.";
+        }
     }
 }

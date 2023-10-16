@@ -1,6 +1,7 @@
 @page "/"
 @inject IHttpClientFactory HttpClientFactory
-<h3>All Posts</h3>
+
+<h3 style="font-weight: bold">Posts</h3>
 
 @if (posts == null)
 {
@@ -12,25 +13,24 @@ else if (posts.Length == 0)
 }
 else
 {
-    <table class="table">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Context</th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var post in posts)
-        {
-            <tr>
-                <td>@post.ID</td>
-                <td>@post.title</td>
-                <td>@post.context</td>
-            </tr>
-        }
-        </tbody>
-    </table>
+    @foreach (var post in posts)
+    {
+        <div class="post-container">
+            <h4>@post.title</h4>
+            <p>@post.context</p>
+            <button @onclick="() => LoadComments(post)">See Comments</button>
+            <!-- Placeholder for displaying comments -->
+            @if (post.Comments != null && post.Comments.Any())
+            {
+                <ul>
+                    @foreach (var comment in post.Comments)
+                    {
+                        <li>@comment</li>
+                    }
+                </ul>
+            }
+        </div>
+    }
 }
 
 @code {
@@ -42,8 +42,6 @@ else
         {
             var client = HttpClientFactory.CreateClient("NoSSL");
             posts = await client.GetFromJsonAsync<Post[]>("Post");
-
-
         }
         catch (Exception e)
         {
@@ -55,10 +53,18 @@ else
         }
     }
 
+    private void LoadComments(Post post)
+    {
+    // Here, you would load comments for the given post.
+    // This is just a mock for demonstration purposes.
+        post.Comments = new[] { "This is a comment!", "Another comment here." };
+    }
+
     public class Post
     {
         public int ID { get; set; }
         public string title { get; set; }
         public string context { get; set; }
+        public string[] Comments { get; set; } // Assuming comments are strings for this example.
     }
 }
