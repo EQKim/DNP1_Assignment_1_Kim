@@ -93,7 +93,7 @@ public class PostController : ControllerBase
             Directory.CreateDirectory(foldername);
         }
 
-        if (string.IsNullOrEmpty(newPost.description))
+        if (string.IsNullOrEmpty(newPost.context))
         {
             throw new Exception("Your description cant be empty");
         }

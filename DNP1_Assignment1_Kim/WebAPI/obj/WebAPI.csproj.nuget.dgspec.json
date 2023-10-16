@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\karee\\OneDrive\\Desktop\\Git Assignment_1 DNP1\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\WebAPI\\WebAPI.csproj": {}
+    "C:\\Users\\Kim\\Desktop\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\WebAPI\\WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\karee\\OneDrive\\Desktop\\Git Assignment_1 DNP1\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\WebAPI\\WebAPI.csproj": {
+    "C:\\Users\\Kim\\Desktop\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\WebAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\karee\\OneDrive\\Desktop\\Git Assignment_1 DNP1\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\WebAPI\\WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\Kim\\Desktop\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\WebAPI\\WebAPI.csproj",
         "projectName": "WebAPI",
-        "projectPath": "C:\\Users\\karee\\OneDrive\\Desktop\\Git Assignment_1 DNP1\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\WebAPI\\WebAPI.csproj",
-        "packagesPath": "C:\\Users\\karee\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\karee\\OneDrive\\Desktop\\Git Assignment_1 DNP1\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\WebAPI\\obj\\",
+        "projectPath": "C:\\Users\\Kim\\Desktop\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\WebAPI\\WebAPI.csproj",
+        "packagesPath": "C:\\Users\\Kim\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Kim\\Desktop\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\karee\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Kim\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"

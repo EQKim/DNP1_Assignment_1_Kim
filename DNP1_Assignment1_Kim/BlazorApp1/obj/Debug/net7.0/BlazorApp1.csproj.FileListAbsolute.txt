@@ -30,3 +30,35 @@ C:\Users\karee\OneDrive\Desktop\Git Assignment_1 DNP1\DNP1_Assignment_1_Kim\DNP1
 C:\Users\karee\OneDrive\Desktop\Git Assignment_1 DNP1\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\BlazorApp1.genruntimeconfig.cache
 C:\Users\karee\OneDrive\Desktop\Git Assignment_1 DNP1\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\ref\BlazorApp1.dll
 C:\Users\karee\OneDrive\Desktop\Git Assignment_1 DNP1\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\scopedcss\Pages\Index.razor.rz.scp.css
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\bin\Debug\net7.0\appsettings.Development.json
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\bin\Debug\net7.0\appsettings.json
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\bin\Debug\net7.0\BlazorApp1.staticwebassets.runtime.json
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\bin\Debug\net7.0\BlazorApp1.exe
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\bin\Debug\net7.0\BlazorApp1.deps.json
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\bin\Debug\net7.0\BlazorApp1.runtimeconfig.json
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\bin\Debug\net7.0\BlazorApp1.dll
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\bin\Debug\net7.0\BlazorApp1.pdb
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\BlazorApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\BlazorApp1.AssemblyInfoInputs.cache
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\BlazorApp1.AssemblyInfo.cs
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\BlazorApp1.csproj.CoreCompileInputs.cache
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\BlazorApp1.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\BlazorApp1.RazorAssemblyInfo.cache
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\BlazorApp1.RazorAssemblyInfo.cs
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\staticwebassets\msbuild.BlazorApp1.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\staticwebassets\msbuild.build.BlazorApp1.props
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.BlazorApp1.props
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\staticwebassets\msbuild.buildTransitive.BlazorApp1.props
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\staticwebassets.pack.json
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\staticwebassets.build.json
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\staticwebassets.development.json
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\scopedcss\Pages\Index.razor.rz.scp.css
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\scopedcss\Shared\MainLayout.razor.rz.scp.css
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\scopedcss\Shared\NavMenu.razor.rz.scp.css
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\scopedcss\bundle\BlazorApp1.styles.css
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\scopedcss\projectbundle\BlazorApp1.bundle.scp.css
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\BlazorApp1.dll
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\refint\BlazorApp1.dll
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\BlazorApp1.pdb
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\BlazorApp1.genruntimeconfig.cache
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\ref\BlazorApp1.dll

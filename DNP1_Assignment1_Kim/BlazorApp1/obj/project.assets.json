@@ -8,19 +8,19 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\karee\\.nuget\\packages\\": {}
+    "C:\\Users\\Kim\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\karee\\OneDrive\\Desktop\\Git Assignment_1 DNP1\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\BlazorApp1\\BlazorApp1.csproj",
+      "projectUniqueName": "C:\\Users\\Kim\\Desktop\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\BlazorApp1\\BlazorApp1.csproj",
       "projectName": "BlazorApp1",
-      "projectPath": "C:\\Users\\karee\\OneDrive\\Desktop\\Git Assignment_1 DNP1\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\BlazorApp1\\BlazorApp1.csproj",
-      "packagesPath": "C:\\Users\\karee\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\karee\\OneDrive\\Desktop\\Git Assignment_1 DNP1\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\BlazorApp1\\obj\\",
+      "projectPath": "C:\\Users\\Kim\\Desktop\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\BlazorApp1\\BlazorApp1.csproj",
+      "packagesPath": "C:\\Users\\Kim\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Kim\\Desktop\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\BlazorApp1\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\karee\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Kim\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
