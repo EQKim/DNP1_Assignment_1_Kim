@@ -60,7 +60,8 @@ public class PostController : ControllerBase
                     var json = System.IO.File.ReadAllText(file);
                     var post = JsonSerializer.Deserialize<Post>(json);
 
-                    if (post.title.Equals(title))
+                    // Check if the post title contains the search term (case-insensitive)
+                    if (post.title.IndexOf(title, StringComparison.OrdinalIgnoreCase) >= 0)
                     {
                         posts.Add(post);
                     }
@@ -75,6 +76,7 @@ public class PostController : ControllerBase
         }
         return posts;
     }
+
 
 
     //Create

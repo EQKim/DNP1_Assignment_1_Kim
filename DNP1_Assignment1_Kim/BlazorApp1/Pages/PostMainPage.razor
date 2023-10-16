@@ -1,7 +1,14 @@
 @page "/"
 @inject IHttpClientFactory HttpClientFactory
 
-<h3 style="font-weight: bold">Posts</h3>
+<div class="header">
+    <h3 style="font-weight: bold; display:inline-block;">Posts</h3>
+
+    <div style="float:right; margin: 10px;">
+        <input type="text" @bind="searchTerm" placeholder="Search by title..." />
+        <button @onclick="SearchPosts">Search</button>
+    </div>
+</div>
 
 @if (posts == null)
 {
@@ -35,8 +42,14 @@ else
 
 @code {
     private Post[] posts;
+    private string searchTerm = "";
 
     protected override async Task OnInitializedAsync()
+    {
+        await LoadAllPosts();
+    }
+
+    private async Task LoadAllPosts()
     {
         try
         {
@@ -53,10 +66,34 @@ else
         }
     }
 
+    private async Task SearchPosts()
+    {
+        if (string.IsNullOrWhiteSpace(searchTerm))
+        {
+            await LoadAllPosts();
+        }
+        else
+        {
+            try
+            {
+                var client = HttpClientFactory.CreateClient("NoSSL");
+                posts = await client.GetFromJsonAsync<Post[]>($"Post/ByTitle?title={searchTerm}");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error while fetching posts: " + e.Message);
+                if (e.InnerException != null)
+                {
+                    Console.WriteLine("Inner exception: " + e.InnerException);
+                }
+            }
+        }
+    }
+
     private void LoadComments(Post post)
     {
-    // Here, you would load comments for the given post.
-    // This is just a mock for demonstration purposes.
+        // Here, you would load comments for the given post.
+        // This is just a mock for demonstration purposes.
         post.Comments = new[] { "This is a comment!", "Another comment here." };
     }
 
