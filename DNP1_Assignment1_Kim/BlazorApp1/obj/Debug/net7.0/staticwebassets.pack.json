@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\BlazorApp1.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Kim\\Desktop\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\BlazorApp1\\wwwroot\\CreateUserIcon.png",
+      "PackagePath": "staticwebassets\\CreateUserIcon.png"
+    },
+    {
       "Id": "C:\\Users\\Kim\\Desktop\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\BlazorApp1\\wwwroot\\LoginIcon.png",
       "PackagePath": "staticwebassets\\LoginIcon.png"
     },

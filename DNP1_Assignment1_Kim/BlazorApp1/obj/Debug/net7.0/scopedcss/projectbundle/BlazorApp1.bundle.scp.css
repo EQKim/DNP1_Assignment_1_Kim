@@ -1,3 +1,60 @@
+/* _content/BlazorApp1/Pages/CreateUserPage.razor.rz.scp.css */
+
+.full-page[b-k9i3ygf1vr] 
+{
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+
+.login-container[b-k9i3ygf1vr] {
+    width: 500px;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+}
+
+
+h3[b-k9i3ygf1vr] {
+    text-align: center;
+}
+
+.input-group[b-k9i3ygf1vr] {
+    margin-bottom: 15px;
+}
+
+label[b-k9i3ygf1vr] {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[b-k9i3ygf1vr] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[b-k9i3ygf1vr] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px; /*spacing */
+    background-color: #0071c1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+button:hover[b-k9i3ygf1vr] {
+    background-color: #005a9b;
+}
 /* _content/BlazorApp1/Pages/Index.razor.rz.scp.css */
 
 .welcome-box[b-70cdui5b69] {

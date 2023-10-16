@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5hcA9drDJ6IPSeoOG45NEKMyHtZPvn8N5i7wJHhZWFQ=",
+  "Hash": "yxVs9n7E4sEoLVUl4ABLtsKEhJeVt+g9J7qjaRVkXyA=",
   "Source": "BlazorApp1",
   "BasePath": "_content/BlazorApp1",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Kim\\Desktop\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\BlazorApp1\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\BlazorApp1.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Kim\\Desktop\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\BlazorApp1\\wwwroot\\CreateUserIcon.png",
+      "SourceId": "BlazorApp1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Kim\\Desktop\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\BlazorApp1\\wwwroot\\",
+      "BasePath": "_content/BlazorApp1",
+      "RelativePath": "CreateUserIcon.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\CreateUserIcon.png"
     },
     {
       "Identity": "C:\\Users\\Kim\\Desktop\\DNP1_Assignment_1_Kim\\DNP1_Assignment1_Kim\\BlazorApp1\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
