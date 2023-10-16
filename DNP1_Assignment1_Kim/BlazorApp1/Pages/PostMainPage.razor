@@ -1,5 +1,5 @@
 @page "/"
-@inject HttpClient Http
+@inject IHttpClientFactory HttpClientFactory
 <h3>All Posts</h3>
 
 @if (posts == null)
@@ -14,21 +14,21 @@ else
 {
     <table class="table">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Context</th>
-            </tr>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Context</th>
+        </tr>
         </thead>
         <tbody>
-            @foreach (var post in posts)
-            {
-                <tr>
-                    <td>@post.ID</td>
-                    <td>@post.title</td>
-                    <td>@post.context</td>
-                </tr>
-            }
+        @foreach (var post in posts)
+        {
+            <tr>
+                <td>@post.ID</td>
+                <td>@post.title</td>
+                <td>@post.context</td>
+            </tr>
+        }
         </tbody>
     </table>
 }
@@ -40,12 +40,18 @@ else
     {
         try
         {
-            posts = await Http.GetFromJsonAsync<Post[]>("https://localhost:5237");
+            var client = HttpClientFactory.CreateClient("NoSSL");
+            posts = await client.GetFromJsonAsync<Post[]>("Post");
+
+
         }
         catch (Exception e)
         {
-            // Handle exception accordingly.
             Console.WriteLine("Error while fetching posts: " + e.Message);
+            if (e.InnerException != null)
+            {
+                Console.WriteLine("Inner exception: " + e.InnerException);
+            }
         }
     }
 
