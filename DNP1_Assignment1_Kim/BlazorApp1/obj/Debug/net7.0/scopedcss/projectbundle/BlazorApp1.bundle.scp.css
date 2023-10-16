@@ -14,6 +14,63 @@
     color: blue;
     text-decoration: underline;
 }
+/* _content/BlazorApp1/Pages/LoginPage.razor.rz.scp.css */
+
+.full-page[b-480z8q4hvn] 
+{
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+}
+
+.login-container[b-480z8q4hvn] {
+    width: 500px;
+    padding: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+}
+
+
+h3[b-480z8q4hvn] {
+    text-align: center;
+}
+
+.input-group[b-480z8q4hvn] {
+    margin-bottom: 15px;
+}
+
+label[b-480z8q4hvn] {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[b-480z8q4hvn] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[b-480z8q4hvn] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px; /*spacing */
+    background-color: #0071c1;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+button:hover[b-480z8q4hvn] {
+    background-color: #005a9b;
+}
 /* _content/BlazorApp1/Shared/MainLayout.razor.rz.scp.css */
 .page[b-45rkf8v3vv] {
     position: relative;

@@ -1,7 +1,33 @@
 @page "/LoginPage"
 
-<h3>LoginPage</h3>
+<div class="full-page">
+    <div class="login-container">
+        <h3 style="font-weight: bold">Login</h3>
+        <div>
+            <label for="username">Username:</label>
+            <input type="text" id="username"/>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password"/>
+        </div>
+        <div>
+            <button>Login</button>
+        </div>
+    </div>
+</div>
 
 @code {
     // Your LoginPage logic here
+}
+
+
+@code {
+    string Username { get; set; }
+    string Password { get; set; }
+
+    private void Login()
+    {
+    // Your login logic here
+    }
 }
