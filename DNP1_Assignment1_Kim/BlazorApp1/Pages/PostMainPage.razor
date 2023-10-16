@@ -27,14 +27,14 @@ else
             
             @if (IsGifUrl(post.context))
             {
-                <img src="@post.context" alt="GIF Content" style="max-width:100%; height:auto;"/>
+                <img src="@post.context" alt="GIF Content" style="max-width:100%; height:auto; display:block;"/>
             }
             else
             {
                 <p>@post.context</p>
             }
 
-            <button @onclick="() => LoadComments(post)">See Comments</button>
+            <button @onclick="() => LoadComments(post)" style="margin-top: 10px;">See Comments</button>
             <!-- Placeholder for displaying comments -->
             @if (post.Comments != null && post.Comments.Any())
             {
