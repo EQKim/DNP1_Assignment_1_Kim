@@ -76,3 +76,11 @@ C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\obj\Debug
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\obj\Debug\net7.0\ref\WebAPI.dll
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\JSON_Storage\UserTESTING.json
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\JSON_Storage\Post_4.json
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

@@ -1,4 +1,5 @@
 @page "/LoginPage"
+@inject Blazored.LocalStorage.ILocalStorageService localStorageService
 @inject IHttpClientFactory HttpClientFactory
 @inject NavigationManager NavigationManager
 
@@ -17,7 +18,7 @@
         <div>
             <button style="font-weight: bold" @onclick="Login">Login</button>
         </div>
-        @if(!string.IsNullOrEmpty(ErrorMessage))
+        @if (!string.IsNullOrEmpty(ErrorMessage))
         {
             <p style="color: red;">@ErrorMessage</p>
         }
@@ -33,7 +34,7 @@
     {
         var client = HttpClientFactory.CreateClient("NoSSL");
 
-        var loginRequest = new 
+        var loginRequest = new
         {
             Username = this.Username,
             Password = this.Password
@@ -43,12 +44,17 @@
 
         if (response.IsSuccessStatusCode)
         {
-            // Handle successful login (e.g., navigate to another page, save user details to a session, etc.)
+             // Store the token for subsequent requests
+            var tokenResponse = await response.Content.ReadFromJsonAsync<TokenResponse>();
+            if (tokenResponse != null)
+            {
+                await localStorageService.SetItemAsync("jwtToken", tokenResponse.Token);
+            }
+
             ErrorMessage = "";
-            // For instance, to navigate to another page you might use:
-            // NavigationManager.NavigateTo("/somepage");
+            NavigationManager.NavigateTo("/");
         }
-        else if(response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+        else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
         {
             ErrorMessage = "Invalid username or password.";
         }
@@ -57,4 +63,6 @@
             ErrorMessage = "An unexpected error occurred.";
         }
     }
+
+    private record TokenResponse(string Token);
 }
