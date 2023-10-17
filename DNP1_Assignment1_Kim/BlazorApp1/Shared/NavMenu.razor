@@ -25,23 +25,27 @@
             </NavLink>
         </div>
 
-        <!-- Authentication specific links -->
-        <AuthorizeView>
-            <Authorized>
-                <!-- Logout Button -->
-                <div class="nav-item px-3">
-                    <button @onclick="Logout">Logout</button>
-                </div>
-            </Authorized>
-            <NotAuthorized>
-                <!-- Login Link -->
-                <div class="nav-item px-3">
-                    <NavLink class="nav-link" href="LoginPage">
-                        <span class="oi oi-account-login" aria-hidden="true"></span> Login
-                    </NavLink>
-                </div>
-            </NotAuthorized>
-        </AuthorizeView>
+       <!-- Authentication specific links -->
+       <AuthorizeView>
+           <Authorized>
+               <!-- Create Post Link for Authorized (Logged in) Users -->
+               <div class="nav-item px-3">
+                   <NavLink class="nav-link" href="CreatePostPage">
+                       <span class="oi oi-plus" aria-hidden="true"></span> Create Post
+                   </NavLink>
+               </div>
+           </Authorized>
+           
+           <NotAuthorized>
+               <!-- Login Link for Non-Authorized Users -->
+               <div class="nav-item px-3">
+                   <NavLink class="nav-link" href="LoginPage">
+                       <span class="oi oi-account-login" aria-hidden="true"></span> Login
+                   </NavLink>
+               </div>
+           </NotAuthorized>
+       </AuthorizeView>
+
 
     </nav>
 </div>
