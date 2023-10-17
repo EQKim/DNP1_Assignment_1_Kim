@@ -130,7 +130,8 @@ button:hover[b-480z8q4hvn] {
 }
 /* _content/BlazorApp1/Pages/PostMainPage.razor.rz.scp.css */
 .post-container[b-318081eyz9] {
-    border: 1px solid #e0e0e0;
+    border: 3px solid darkslateblue;
+    width: 50%;
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 5px;
