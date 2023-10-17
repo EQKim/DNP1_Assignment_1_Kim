@@ -1,25 +1,45 @@
 ﻿@inherits LayoutComponentBase
+@using Microsoft.AspNetCore.Components.Authorization
+@using CustomAuthentication
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject HttpClient Http
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorageService
+@inject NavigationManager NavigationManager
 
 <PageTitle>BlazorApp1</PageTitle>
 
 <div class="page">
     <div class="sidebar">
-        <NavMenu/>
+        <NavMenu />
     </div>
 
     <main>
         <div class="top-row px-4">
-            <!--Login-->
-            <NavLink class="custom-nav-link" href="LoginPage">
-                <img src="LoginIcon.png" alt="Login Icon" class="login-image"/>
-                Login
-            </NavLink>
-            
-             <!--Create-->
-            <NavLink class="custom-nav-link" href="CreateUserPage">
-                <img src="CreateUserIcon.png" alt="Login Icon" class="login-image"/>
-                Create User
-            </NavLink>
+            <AuthorizeView>
+                <Authorized>
+                    <NavLink class="custom-nav-link" href="">
+                        <img src="UserIcon.png" alt="User Icon" class="login-image" />
+                        @username
+                    </NavLink>
+
+                    <button class="custom-nav-link" @onclick="LogoutAsync">
+                        <img src="LogoutIcon.png" alt="Logout Icon" class="login-image" />
+                        Logout
+                    </button>
+                </Authorized>
+
+                <NotAuthorized>
+                    <NavLink class="custom-nav-link" href="LoginPage">
+                        <img src="LoginIcon.png" alt="Login Icon" class="login-image" />
+                        Login
+                    </NavLink>
+                    
+                    <NavLink class="custom-nav-link" href="CreateUserPage">
+                        <img src="CreateUserIcon.png" alt="Create User Icon" class="login-image" />
+                        Create User
+                    </NavLink>
+                </NotAuthorized>
+            </AuthorizeView>
         </div>
 
         <article class="content px-4">
@@ -27,3 +47,46 @@
         </article>
     </main>
 </div>
+
+@code {
+    private string username = "Loading...";
+
+    protected override async Task OnInitializedAsync()
+    {
+        var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        
+        // Diagnostic logs:
+        Console.WriteLine($"IsAuthenticated: {state.User.Identity.IsAuthenticated}");
+        Console.WriteLine($"UserName: {state.User.Identity.Name}");
+        
+        if (state.User.Identity.IsAuthenticated)
+        {
+            username = state.User.Identity.Name ?? "Unknown";
+        }
+    }
+
+    private async Task LogoutAsync()
+    {
+        // Make an HTTP call to your server's logout endpoint
+        var response = await Http.PostAsync("User/Logout", null);
+
+        if (response.IsSuccessStatusCode)
+        {
+            // Remove JWT token from local storage
+            await LocalStorageService.RemoveItemAsync("ThisIsASuperSecureSecretKey32Char");
+
+            // Use our custom authentication state provider to mark the user as logged out
+            var customAuthState = (CustomAuthenticationStateProvider)AuthenticationStateProvider;
+            customAuthState.MarkUserAsLoggedOut();
+
+            // Redirect the user to the login page or just reload the current page
+            NavigationManager.NavigateTo("LoginPage", true);
+        }
+        else
+        {
+            // Handle any errors that might occur during logout
+            Console.WriteLine("Error logging out.");
+        }
+    }
+}
+

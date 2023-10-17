@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
 using System;
+using CustomAuthentication;
 
 //Builder
 var builder = WebApplication.CreateBuilder(args);
@@ -17,36 +18,27 @@ builder.Services.AddBlazoredLocalStorage();
 //Auth
 builder.Services.AddAuthorizationCore();
 
-// Bypass SSL validation
-builder.Services.AddTransient(sp => new HttpClientHandler
-{
-    ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
-});
+// Add Authentication State Provider services
+builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 
-// Configure HttpClient with the handler for bypassing SSL
+// Register the custom message handler
+builder.Services.AddTransient<JwtTokenHandler>();
+
+// Configure HttpClient with the handler for bypassing SSL and setting the JWT token
 builder.Services.AddHttpClient("NoSSL", c =>
     {
         c.BaseAddress = new Uri("https://localhost:7115"); // adjust if needed
     })
-    .ConfigurePrimaryHttpMessageHandler(() => new HttpClientHandler
+    .ConfigurePrimaryHttpMessageHandler(sp => 
     {
-        ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+        var handler = new HttpClientHandler
+        {
+            ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
+        };
+        var tokenHandler = sp.GetRequiredService<JwtTokenHandler>();
+        tokenHandler.InnerHandler = handler; // Set the inner handler
+        return tokenHandler;
     });
-
-// Registering an HttpClient factory that takes care of JWT tokens
-builder.Services.AddScoped<HttpClient>(sp =>
-{
-    var client = sp.GetRequiredService<IHttpClientFactory>().CreateClient("NoSSL");
-    var localStorage = sp.GetRequiredService<ILocalStorageService>();
-    var token = localStorage.GetItemAsync<string>("ThisIsASuperSecureSecretKey32Char").Result; 
-    if (!string.IsNullOrEmpty(token))
-    {
-        client.DefaultRequestHeaders.Authorization =
-            new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
-    }
-
-    return client;
-});
 
 //Build
 var app = builder.Build();

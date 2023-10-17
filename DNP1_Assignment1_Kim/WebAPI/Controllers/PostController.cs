@@ -42,7 +42,7 @@ public class PostController : ControllerBase
         return posts;
     }
 
-    
+
     //Get Specified Post
     [HttpGet("ByTitle")]
     public ActionResult<IEnumerable<Post>> GetPostFromTitle(String title)
@@ -74,9 +74,9 @@ public class PostController : ControllerBase
                 }
             }
         }
+
         return posts;
     }
-
 
 
     //Create
@@ -88,7 +88,7 @@ public class PostController : ControllerBase
         Posts.Add(newPost);
         //-----------------------------
         var foldername = "JSON_Storage";
-        
+
         //Guards
         if (!Directory.Exists("JSON_Storage"))
         {

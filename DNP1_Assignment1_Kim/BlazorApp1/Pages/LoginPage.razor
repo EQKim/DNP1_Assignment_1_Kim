@@ -1,8 +1,9 @@
 @page "/LoginPage"
+@using CustomAuthentication
 @inject Blazored.LocalStorage.ILocalStorageService localStorageService
 @inject IHttpClientFactory HttpClientFactory
 @inject NavigationManager NavigationManager
-
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 <div class="full-page">
     <div class="login-container">
@@ -29,6 +30,8 @@
     string Username { get; set; }
     string Password { get; set; }
     string ErrorMessage { get; set; }
+    private bool isFirstRender = true;
+    private string tokenToSetInLocalStorage = null;
 
     private async Task Login()
     {
@@ -44,11 +47,15 @@
 
         if (response.IsSuccessStatusCode)
         {
-             // Store the token for subsequent requests
+            // Get the token for subsequent requests
             var tokenResponse = await response.Content.ReadFromJsonAsync<TokenResponse>();
             if (tokenResponse != null)
             {
-                await localStorageService.SetItemAsync("jwtToken", tokenResponse.Token);
+                tokenToSetInLocalStorage = tokenResponse.Token;
+
+                // Notify the authentication state provider of the change in authentication state
+                var customAuthState = (CustomAuthenticationStateProvider)AuthenticationStateProvider;
+                customAuthState.MarkUserAsAuthenticated(loginRequest.Username);
             }
 
             ErrorMessage = "";
@@ -61,6 +68,24 @@
         else
         {
             ErrorMessage = "An unexpected error occurred.";
+        }
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (isFirstRender)
+        {
+            await SetTokenInLocalStorageIfAvailable();
+            isFirstRender = false;
+        }
+    }
+
+    private async Task SetTokenInLocalStorageIfAvailable()
+    {
+        if (!string.IsNullOrEmpty(tokenToSetInLocalStorage))
+        {
+            await localStorageService.SetItemAsync("ThisIsASuperSecureSecretKey32Char", tokenToSetInLocalStorage);
+            tokenToSetInLocalStorage = null; // Clear it after setting.
         }
     }
 

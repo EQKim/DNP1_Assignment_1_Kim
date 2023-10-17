@@ -83,6 +83,15 @@ public class UserController : ControllerBase
             return BadRequest("An error occurred while creating the user");
         }
     }
+    
+    
+    [HttpPost("Logout")]
+    public ActionResult Logout()
+    {
+        // Here, we're not doing much server-side. But this is where you'd add logic if you implement token blacklisting.
+        return Ok(new { message = "Logged out successfully" });
+    }
+
 
     private string GenerateJwtToken(User user)
     {
