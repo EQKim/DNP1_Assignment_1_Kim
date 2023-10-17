@@ -1,11 +1,14 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject Blazored.LocalStorage.ILocalStorageService LocalStorageService
+@inject NavigationManager NavigationManager
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <!-- Here's the modified part -->
         <a class="navbar-brand" style="font-weight: bold" href="">
             <img src="ViaLogo.png" alt="Logo" class="logo-image"/>
             ViaReddit
         </a>
-        <!-- End of the modified part -->
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -14,11 +17,32 @@
 
 <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
     <nav class="flex-column">
+
+        <!-- Main Page -->
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                 <span class="oi oi-home" aria-hidden="true"></span> Posts
             </NavLink>
         </div>
+
+        <!-- Authentication specific links -->
+        <AuthorizeView>
+            <Authorized>
+                <!-- Logout Button -->
+                <div class="nav-item px-3">
+                    <button @onclick="Logout">Logout</button>
+                </div>
+            </Authorized>
+            <NotAuthorized>
+                <!-- Login Link -->
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="LoginPage">
+                        <span class="oi oi-account-login" aria-hidden="true"></span> Login
+                    </NavLink>
+                </div>
+            </NotAuthorized>
+        </AuthorizeView>
+
     </nav>
 </div>
 
@@ -27,9 +51,14 @@
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
+    private async Task Logout()
+    {
+        await LocalStorageService.RemoveItemAsync("jwtToken");
+        NavigationManager.NavigateTo("LoginPage", true); // Redirect to login page after logout
+    }
+
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
     }
-
 }
