@@ -9,12 +9,14 @@
 }
 
 .login-container {
+    border: 2px solid darkslateblue;
     width: 500px;
     padding: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     font-family: Arial, sans-serif;
 }
+
 
 
 h3 {

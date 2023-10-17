@@ -9,6 +9,7 @@
 }
 
 .login-container[b-k9i3ygf1vr] {
+    border: 2px solid darkslateblue;
     width: 500px;
     padding: 40px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
