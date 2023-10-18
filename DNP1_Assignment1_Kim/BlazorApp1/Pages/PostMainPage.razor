@@ -2,51 +2,53 @@
 @inject IHttpClientFactory HttpClientFactory
 
 <div class="header">
-    <h3 style="font-weight: bold; display:inline-block;">Posts</h3>
-    <div style="float:right; margin: 10px;">
-        <input type="text" @bind="searchTerm" placeholder="Search by title..." />
+    <h3 style="font-weight: bold;">Posts</h3>
+    <div>
+        <input type="text" class="search-input" @bind="searchTerm" placeholder="Search by title..."/>
         <button @onclick="SearchPosts">Search</button>
     </div>
 </div>
 
-@if (posts == null)
-{
-    <p>Loading posts...</p>
-}
-else if (posts.Length == 0)
-{
-    <p>No posts found.</p>
-}
-else
-{
-    @foreach (var post in posts)
+<div class="posts-container">
+    @if (posts == null)
     {
-        <div class="post-container">
-            <h4>@post.title</h4>
-            
-            @if (IsGifUrl(post.context))
-            {
-                <img src="@post.context" alt="GIF Content" style="max-width:100%; height:auto; display:block;"/>
-            }
-            else
-            {
-                <p>@post.context</p>
-            }
-
-            <button @onclick="() => LoadComments(post)" style="margin-top: 10px;">See Comments</button>
-            <!-- Placeholder for displaying comments -->
-            @if (post.Comments != null && post.Comments.Any())
-            {
-                <ul>
-                    @foreach (var comment in post.Comments)
-                    {
-                        <li>@comment</li>
-                    }
-                </ul>
-            }
-        </div>
+        <p>Loading posts...</p>
     }
-}
+    else if (posts.Length == 0)
+    {
+        <p>No posts found.</p>
+    }
+    else
+    {
+        @foreach (var post in posts)
+        {
+            <div class="post-container">
+                <h4>@post.title</h4>
+
+                @if (IsGifUrl(post.context))
+                {
+                    <img src="@post.context" alt="GIF Content" style="max-width:100%; height:auto;"/>
+                }
+                else
+                {
+                    <p>@post.context</p>
+                }
+
+                <button @onclick="() => LoadComments(post)" class="see-comments-btn">See Comments</button>
+                <!-- Placeholder for displaying comments -->
+                @if (post.Comments != null && post.Comments.Any())
+                {
+                    <ul>
+                        @foreach (var comment in post.Comments)
+                        {
+                            <li>@comment</li>
+                        }
+                    </ul>
+                }
+            </div>
+        }
+    }
+</div>
 
 @code {
     private Post[] posts;
@@ -109,8 +111,8 @@ else
 
     private void LoadComments(Post post)
     {
-        // Here, you would load comments for the given post.
-        // This is just a mock for demonstration purposes.
+    // Here, you would load comments for the given post.
+    // This is just a mock for demonstration purposes.
         post.Comments = new[] { "This is a comment!", "Another comment here." };
     }
 
@@ -121,4 +123,5 @@ else
         public string context { get; set; }
         public string[] Comments { get; set; } // Assuming comments are strings for this example.
     }
+
 }
