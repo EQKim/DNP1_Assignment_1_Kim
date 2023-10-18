@@ -65,7 +65,7 @@
         try
         {
             var client = HttpClientFactory.CreateClient("NoSSL");
-            posts = await client.GetFromJsonAsync<Post[]>("Post");
+            posts = await client.GetFromJsonAsync<Post[]>("Post/GetAllPost");
         }
         catch (Exception e)
         {

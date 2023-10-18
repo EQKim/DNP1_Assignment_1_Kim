@@ -12,7 +12,7 @@ public class PostController : ControllerBase
 
 
     //Get All Posts
-    [HttpGet]
+    [HttpGet("GetAllPost")]
     public ActionResult<IEnumerable<Post>> GetPosts()
     {
         //Fields 

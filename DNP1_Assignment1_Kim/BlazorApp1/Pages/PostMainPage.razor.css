@@ -34,6 +34,7 @@
 .see-comments-btn {
     display: block;
     margin-top: 10px;
+    float: right;
 }
 
 .gif-in-container {
