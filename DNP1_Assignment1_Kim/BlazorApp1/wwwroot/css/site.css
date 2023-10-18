@@ -68,8 +68,7 @@ a, .btn-link {
 }
 
 /*logo Image*/
-.logo-image
-{
+.logo-image {
     width: 30px;
     height: 30px;
     border-radius: 10px;
@@ -78,8 +77,7 @@ a, .btn-link {
 
 
 /*Login Image*/
-.login-image
-{
+.login-image {
     width: 30px;
     height: 30px;
     margin-right: 5px;
@@ -90,7 +88,11 @@ a, .btn-link {
     text-decoration: none !important;
     color: black !important;
     font-weight: bold !important;
+    padding-left: 10px; 
+    padding-right: 10px;
 }
+
+
 
 .top-row .custom-nav-link:hover {
     text-decoration: none !important;

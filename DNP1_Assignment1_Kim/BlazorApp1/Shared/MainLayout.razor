@@ -2,7 +2,7 @@
 @using Microsoft.AspNetCore.Components.Authorization
 @using CustomAuthentication
 @inject AuthenticationStateProvider AuthenticationStateProvider
-@inject HttpClient Http
+@inject IHttpClientFactory HttpClientFactory
 @inject Blazored.LocalStorage.ILocalStorageService LocalStorageService
 @inject NavigationManager NavigationManager
 
@@ -23,7 +23,7 @@
                     </NavLink>
 
                     <button class="custom-nav-link" @onclick="LogoutAsync">
-                        <img src="LogoutIcon.png" alt="Logout Icon" class="login-image" />
+                        <img src="LogoutIconV2.png" alt="Logout Icon" class="login-image" />
                         Logout
                     </button>
                 </Authorized>
@@ -50,6 +50,7 @@
 
 @code {
     private string username = "Loading...";
+    private HttpClient Http => HttpClientFactory.CreateClient("NoSSL");
 
     protected override async Task OnInitializedAsync()
     {
@@ -67,25 +68,31 @@
 
     private async Task LogoutAsync()
     {
-        // Make an HTTP call to your server's logout endpoint
-        var response = await Http.PostAsync("User/Logout", null);
-
-        if (response.IsSuccessStatusCode)
+        try
         {
-            // Remove JWT token from local storage
-            await LocalStorageService.RemoveItemAsync("ThisIsASuperSecureSecretKey32Char");
+            var response = await Http.PostAsync("User/Logout", null);
 
-            // Use our custom authentication state provider to mark the user as logged out
-            var customAuthState = (CustomAuthenticationStateProvider)AuthenticationStateProvider;
-            customAuthState.MarkUserAsLoggedOut();
+            if (response.IsSuccessStatusCode)
+            {
+                // Remove JWT token from local storage
+                await LocalStorageService.RemoveItemAsync("ThisIsASuperSecureSecretKey32Char");
 
-            // Redirect the user to the login page or just reload the current page
-            NavigationManager.NavigateTo("LoginPage", true);
+                // Use our custom authentication state provider to mark the user as logged out
+                var customAuthState = (CustomAuthenticationStateProvider)AuthenticationStateProvider;
+                customAuthState.MarkUserAsLoggedOut();
+
+                // Redirect the user to the login page or just reload the current page
+                NavigationManager.NavigateTo("/", true);
+            }
+            else
+            {
+                // Handle any errors that might occur during logout
+                Console.WriteLine("Error logging out.");
+            }
         }
-        else
+        catch (Exception ex)
         {
-            // Handle any errors that might occur during logout
-            Console.WriteLine("Error logging out.");
+            Console.WriteLine($"Error logging out: {ex.Message}");
         }
     }
 }
