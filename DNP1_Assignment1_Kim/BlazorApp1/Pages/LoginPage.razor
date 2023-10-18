@@ -10,11 +10,11 @@
         <h3 style="font-weight: bold">Login</h3>
         <div>
             <label for="username">Username:</label>
-            <input type="text" id="username" @bind="Username"/>
+            <input type="text" id="username" name="username" @bind="Username"/>
         </div>
         <div>
             <label for="password">Password:</label>
-            <input type="password" id="password" @bind="Password"/>
+            <input type="password" id="password" name="password" @bind="Password"/>
         </div>
         <div>
             <button style="font-weight: bold" @onclick="Login">Login</button>
@@ -30,11 +30,10 @@
     string Username { get; set; }
     string Password { get; set; }
     string ErrorMessage { get; set; }
-    private bool isFirstRender = true;
-    private string tokenToSetInLocalStorage = null;
 
     private async Task Login()
     {
+        Console.WriteLine("Login method started.");
         var client = HttpClientFactory.CreateClient("NoSSL");
 
         var loginRequest = new
@@ -47,17 +46,21 @@
 
         if (response.IsSuccessStatusCode)
         {
-            // Get the token for subsequent requests
             var tokenResponse = await response.Content.ReadFromJsonAsync<TokenResponse>();
+            
             if (tokenResponse != null)
             {
-                tokenToSetInLocalStorage = tokenResponse.Token;
+                Console.WriteLine($"Received token: {tokenResponse.Token}");
+                
+                await localStorageService.SetItemAsync("ThisIsASuperSecureSecretKey32Char", tokenResponse.Token);
 
-                // Notify the authentication state provider of the change in authentication state
+                var tokenFromStorage = await localStorageService.GetItemAsync<string>("ThisIsASuperSecureSecretKey32Char");
+                Console.WriteLine($"Token from storage: {tokenFromStorage}");
+                
                 var customAuthState = (CustomAuthenticationStateProvider)AuthenticationStateProvider;
                 customAuthState.MarkUserAsAuthenticated(loginRequest.Username);
             }
-
+            
             ErrorMessage = "";
             NavigationManager.NavigateTo("/");
         }
@@ -68,24 +71,6 @@
         else
         {
             ErrorMessage = "An unexpected error occurred.";
-        }
-    }
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-        if (isFirstRender)
-        {
-            await SetTokenInLocalStorageIfAvailable();
-            isFirstRender = false;
-        }
-    }
-
-    private async Task SetTokenInLocalStorageIfAvailable()
-    {
-        if (!string.IsNullOrEmpty(tokenToSetInLocalStorage))
-        {
-            await localStorageService.SetItemAsync("ThisIsASuperSecureSecretKey32Char", tokenToSetInLocalStorage);
-            tokenToSetInLocalStorage = null; // Clear it after setting.
         }
     }
 

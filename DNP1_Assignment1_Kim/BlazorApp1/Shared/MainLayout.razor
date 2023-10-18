@@ -10,7 +10,7 @@
 
 <div class="page">
     <div class="sidebar">
-        <NavMenu />
+        <NavMenu/>
     </div>
 
     <main>
@@ -18,24 +18,24 @@
             <AuthorizeView>
                 <Authorized>
                     <NavLink class="custom-nav-link" href="">
-                        <img src="UserIcon.png" alt="User Icon" class="login-image" />
-                        @username
+                        <img src="UserIcon.png" alt="User Icon" class="login-image"/>
+                        @_username
                     </NavLink>
 
                     <button class="custom-nav-link" @onclick="LogoutAsync">
-                        <img src="LogoutIconV2.png" alt="Logout Icon" class="login-image" />
+                        <img src="LogoutIconV2.png" alt="Logout Icon" class="login-image"/>
                         Logout
                     </button>
                 </Authorized>
 
                 <NotAuthorized>
                     <NavLink class="custom-nav-link" href="LoginPage">
-                        <img src="LoginIcon.png" alt="Login Icon" class="login-image" />
+                        <img src="LoginIcon.png" alt="Login Icon" class="login-image"/>
                         Login
                     </NavLink>
-                    
+
                     <NavLink class="custom-nav-link" href="CreateUserPage">
-                        <img src="CreateUserIcon.png" alt="Create User Icon" class="login-image" />
+                        <img src="CreateUserIcon.png" alt="Create User Icon" class="login-image"/>
                         Create User
                     </NavLink>
                 </NotAuthorized>
@@ -49,20 +49,42 @@
 </div>
 
 @code {
-    private string username = "Loading...";
+    private string _username = "Loading...";
     private HttpClient Http => HttpClientFactory.CreateClient("NoSSL");
 
     protected override async Task OnInitializedAsync()
     {
-        var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        
-        // Diagnostic logs:
-        Console.WriteLine($"IsAuthenticated: {state.User.Identity.IsAuthenticated}");
-        Console.WriteLine($"UserName: {state.User.Identity.Name}");
-        
-        if (state.User.Identity.IsAuthenticated)
+        try
         {
-            username = state.User.Identity.Name ?? "Unknown";
+            var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+
+            // Diagnostic logs:
+            Console.WriteLine($"IsAuthenticated: {state.User.Identity.IsAuthenticated}");
+            Console.WriteLine($"UserName: {state.User.Identity.Name}");
+
+            if (state.User.Identity.IsAuthenticated)
+            {
+                _username = state.User.Identity.Name ?? "Unknown";
+            }
+            else
+            {
+                Console.WriteLine("User is not authenticated. Checking local storage for token...");
+                
+                var token = await LocalStorageService.GetItemAsync<string>("ThisIsASuperSecureSecretKey32Char");
+                
+                if (!string.IsNullOrEmpty(token))
+                {
+                    Console.WriteLine($"Token found in local storage: {token}");
+                }
+                else
+                {
+                    Console.WriteLine("No token found in local storage.");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error initializing component: {ex.Message}");
         }
     }
 
@@ -74,19 +96,15 @@
 
             if (response.IsSuccessStatusCode)
             {
-                // Remove JWT token from local storage
                 await LocalStorageService.RemoveItemAsync("ThisIsASuperSecureSecretKey32Char");
 
-                // Use our custom authentication state provider to mark the user as logged out
                 var customAuthState = (CustomAuthenticationStateProvider)AuthenticationStateProvider;
                 customAuthState.MarkUserAsLoggedOut();
 
-                // Redirect the user to the login page or just reload the current page
                 NavigationManager.NavigateTo("/", true);
             }
             else
             {
-                // Handle any errors that might occur during logout
                 Console.WriteLine("Error logging out.");
             }
         }
@@ -96,4 +114,3 @@
         }
     }
 }
-

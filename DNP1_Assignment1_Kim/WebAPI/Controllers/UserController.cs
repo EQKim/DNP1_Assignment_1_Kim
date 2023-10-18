@@ -23,6 +23,7 @@ public class UserController : ControllerBase
         _logger = logger;
     }
 
+    //Login
     [HttpPost("login")]
     public ActionResult<User> GetUser([FromBody] User loginRequest)
     {
@@ -88,7 +89,6 @@ public class UserController : ControllerBase
     [HttpPost("Logout")]
     public ActionResult Logout()
     {
-        // Here, we're not doing much server-side. But this is where you'd add logic if you implement token blacklisting.
         return Ok(new { message = "Logged out successfully" });
     }
 
@@ -98,7 +98,6 @@ public class UserController : ControllerBase
         var claims = new[]
         {
             new Claim(JwtRegisteredClaimNames.Sub, user.Username),
-            // Add more claims as needed
         };
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSecret));
@@ -110,7 +109,9 @@ public class UserController : ControllerBase
             claims: claims,
             expires: DateTime.Now.AddMinutes(_jwtLifespan),
             signingCredentials: creds);
-
+        
+        Console.WriteLine(token);
+        
         return new JwtSecurityTokenHandler().WriteToken(token);
     }
 }
