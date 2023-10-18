@@ -88,10 +88,19 @@ a, .btn-link {
     text-decoration: none !important;
     color: black !important;
     font-weight: bold !important;
-    padding-left: 10px; 
-    padding-right: 10px;
+    padding-left: 5px !important; 
+    padding-right: 5px !important;
 }
 
+/*When logged*/
+.custom-nav-linkV2, .top-row
+{
+    text-decoration: none !important;
+    color: black !important;
+    font-weight: bold !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+}
 
 
 .top-row .custom-nav-link:hover {
