@@ -1,0 +1,55 @@
+@page "/CreatePostPage"
+@inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager NavigationManager
+
+<div class="full-page">
+    <div class="login-container">
+        <h3 style="font-weight: bold">Create Post</h3>
+        <div>
+            <label for="title">Title:</label>
+            <input type="text" id="title" @bind="Title"/>
+        </div>
+        <div>
+            <label for="context">Content:</label>
+            <textarea id="context" @bind="Context"></textarea>
+        </div>
+        <div>
+            <button style="font-weight: bold" @onclick="CreatePost">Create Post</button>
+        </div>
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <p style="color: red">@ErrorMessage</p>
+        }
+    </div>
+</div>
+
+@code {
+    string Title { get; set; }
+    string Context { get; set; }
+    string ErrorMessage { get; set; }
+
+    private async Task CreatePost()
+    {
+        var client = HttpClientFactory.CreateClient("NoSSL");
+
+        var newPost = new
+        {
+            title = this.Title,
+            context = this.Context
+        };
+
+        var response = await client.PostAsJsonAsync("Post/CreatePost", newPost);
+
+        if (response.IsSuccessStatusCode)
+        {
+    // Handle successful post creation
+            ErrorMessage = "Post created successfully!";
+    //You might want to navigate to a page that displays the post or a list of all posts:
+            NavigationManager.NavigateTo("/");
+        }
+        else
+        {
+            ErrorMessage = "An unexpected error occurred.";
+        }
+    }
+}

@@ -42,9 +42,9 @@
 
         if (response.IsSuccessStatusCode)
         {
-    // Handle successful user creation (e.g., navigate to login page, display a success message, etc.)
+            // Handle successful user creation
             ErrorMessage = "User created successfully!";
-    // For instance, to navigate to login page:
+            //Navigate to login page:
             NavigationManager.NavigateTo("/LoginPage");
         }
         else if (response.StatusCode == System.Net.HttpStatusCode.Conflict)
