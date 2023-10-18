@@ -186,12 +186,14 @@ button:hover[b-480z8q4hvn] {
 
 .post-container[b-318081eyz9] {
     width: 50%; /* adjust as needed */
-    margin-top: 20px;
+    margin: 20px auto; /* centers the container horizontally */
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     padding: 15px;
     border-radius: 5px;
     border: 2px solid darkslateblue;
+    position: relative; /* added to position the GIF inside it */
 }
+
 
 .header[b-318081eyz9] {
     display: flex;
@@ -212,6 +214,15 @@ button:hover[b-480z8q4hvn] {
     display: block;
     margin-top: 10px;
 }
+
+.gif-in-container[b-318081eyz9] {
+    width: 100%;
+    height: auto; /* allows the GIF to maintain its aspect ratio */
+    display: block;
+    max-width: 100%; /* ensures the GIF doesn't overflow its container */
+}
+
+
 
 /* _content/BlazorApp1/Shared/MainLayout.razor.rz.scp.css */
 .page[b-45rkf8v3vv] {

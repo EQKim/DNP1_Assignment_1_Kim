@@ -25,14 +25,15 @@
             <div class="post-container">
                 <h4>@post.title</h4>
 
-                @if (IsGifUrl(post.context))
-                {
-                    <img src="@post.context" alt="GIF Content" style="max-width:100%; height:auto;"/>
-                }
-                else
-                {
-                    <p>@post.context</p>
-                }
+               @if (IsGifUrl(post.context))
+               {
+                   <img src="@post.context" alt="GIF Content" class="gif-in-container" />
+               }
+               else
+               {
+                   <p>@post.context</p>
+               }
+
 
                 <button @onclick="() => LoadComments(post)" class="see-comments-btn">See Comments</button>
                 <!-- Placeholder for displaying comments -->
