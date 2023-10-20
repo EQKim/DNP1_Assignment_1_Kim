@@ -1,5 +1,6 @@
 @page "/"
 @inject IHttpClientFactory HttpClientFactory
+@inject NavigationManager Navigation  
 
 <div class="header">
     <h3 style="font-weight: bold;">Posts</h3>
@@ -34,18 +35,7 @@
                    <p>@post.context</p>
                }
 
-
-                <button @onclick="() => LoadComments(post)" class="see-comments-btn">See Comments</button>
-                <!-- Placeholder for displaying comments -->
-                @if (post.Comments != null && post.Comments.Any())
-                {
-                    <ul>
-                        @foreach (var comment in post.Comments)
-                        {
-                            <li>@comment</li>
-                        }
-                    </ul>
-                }
+                <button @onclick="() => ViewSpecificPost(post.PostID)" class="see-comments-btn">See Comments</button>
             </div>
         }
     }
@@ -110,19 +100,15 @@
         return (context.StartsWith("http://") || context.StartsWith("https://")) && context.EndsWith(".gif");
     }
 
-    private void LoadComments(Post post)
+    private void ViewSpecificPost(int postId)
     {
-    // Here, you would load comments for the given post.
-    // This is just a mock for demonstration purposes.
-        post.Comments = new[] { "This is a comment!", "Another comment here." };
+        Navigation.NavigateTo($"/comments/{postId}");
     }
 
     public class Post
     {
-        public int ID { get; set; }
+        public int PostID { get; set; }
         public string title { get; set; }
         public string context { get; set; }
-        public string[] Comments { get; set; } // Assuming comments are strings for this example.
     }
-
 }

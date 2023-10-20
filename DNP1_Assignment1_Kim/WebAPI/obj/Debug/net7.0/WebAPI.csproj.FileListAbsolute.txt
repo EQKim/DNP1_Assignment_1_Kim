@@ -38,11 +38,6 @@ C:\Users\karee\OneDrive\Desktop\Git Assignment_1 DNP1\DNP1_Assignment_1_Kim\DNP1
 C:\Users\karee\OneDrive\Desktop\Git Assignment_1 DNP1\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\JSON_Storage\UserNyall.json
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\appsettings.json
-C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\JSON_Storage\Post_1.json
-C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\JSON_Storage\Post_2.json
-C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\JSON_Storage\UserKim.json
-C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\JSON_Storage\UserNyall.json
-C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\JSON_Storage\Post_3.json
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\WebAPI.exe
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\WebAPI.deps.json
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\WebAPI.runtimeconfig.json
@@ -74,8 +69,6 @@ C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\obj\Debug
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\obj\Debug\net7.0\WebAPI.pdb
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\obj\Debug\net7.0\WebAPI.genruntimeconfig.cache
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\obj\Debug\net7.0\ref\WebAPI.dll
-C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\JSON_Storage\UserTESTING.json
-C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\JSON_Storage\Post_4.json
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
@@ -84,7 +77,6 @@ C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\JSON_Storage\UserNewGuy123.json
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll

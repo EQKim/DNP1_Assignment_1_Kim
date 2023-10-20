@@ -24,6 +24,8 @@ public class UserController : ControllerBase
         _context = context;
     }
 
+    
+    //Login
     [HttpPost("login")]
     public ActionResult<User> GetUser([FromBody] User loginRequest)
     {
@@ -36,6 +38,8 @@ public class UserController : ControllerBase
         return Ok(new { Token = token });
     }
 
+    
+    //Create Account
     [HttpPost("CreateAccount")]
     public async Task<ActionResult<User>> CreateUser([FromBody] User newUser)
     {
@@ -55,12 +59,15 @@ public class UserController : ControllerBase
         }
     }
 
+    //Logout
     [HttpPost("Logout")]
     public ActionResult Logout()
     {
         return Ok(new { message = "Logged out successfully" });
     }
 
+    
+    //JWT Token
     private string GenerateJwtToken(User user)
     {
         var claims = new[]

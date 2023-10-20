@@ -13,18 +13,24 @@ namespace WebAPI.Controllers
     public class PostController : ControllerBase
     {
         private readonly AppDbContext context;
+        private readonly ILogger logger;
 
-        public PostController(AppDbContext context)
+        public PostController(AppDbContext context, ILogger<PostController> logger)
         {
             this.context = context;
+            this.logger = logger;
         }
 
+        
+        //Get All Posts
         [HttpGet("GetAllPost")]
         public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
         {
             return await context.Posts.ToListAsync();
         }
 
+        
+        //Get Post By Title
         [HttpGet("ByTitle")]
         public async Task<ActionResult<IEnumerable<Post>>> GetPostFromTitle(string title)
         {
@@ -37,6 +43,7 @@ namespace WebAPI.Controllers
 
 
 
+        //Create Post
         [HttpPost("CreatePost")]
         public async Task<ActionResult<Post>> CreatePost([FromBody] Post newPost)
         {
@@ -60,6 +67,23 @@ namespace WebAPI.Controllers
             {
                 return StatusCode(500, $"Internal server error: {e.Message}");
             }
+        }
+        
+        
+        
+        //Get Post By ID
+        [HttpGet("GetById")]
+        public async Task<ActionResult<Post>> GetPostFromID(int ID)
+        {
+            logger.LogInformation($"Fetching post with ID {ID}");
+
+            var post = await context.Posts.FirstOrDefaultAsync(p => p.PostID == ID);
+            if (post == null)
+            {
+                logger.LogWarning($"No post found with ID {ID}");
+                return NotFound("Post not found.");
+            }
+            return post;
         }
     }
 }
