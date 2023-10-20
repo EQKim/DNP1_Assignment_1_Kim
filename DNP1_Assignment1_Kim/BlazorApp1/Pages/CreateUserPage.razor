@@ -53,8 +53,7 @@
         }
         else
         {
-            ErrorMessage = "An unexpected error occurred.";
+            ErrorMessage = "An unexpected error occurred." + await response.Content.ReadAsStringAsync();
         }
     }
-
 }

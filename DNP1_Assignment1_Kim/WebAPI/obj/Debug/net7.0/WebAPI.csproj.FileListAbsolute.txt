@@ -85,3 +85,8 @@ C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\JSON_Storage\UserNewGuy123.json
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Npgsql.dll
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\WebAPI\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

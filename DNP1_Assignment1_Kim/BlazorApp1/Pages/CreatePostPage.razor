@@ -1,6 +1,7 @@
 @page "/CreatePostPage"
 @inject IHttpClientFactory HttpClientFactory
 @inject NavigationManager NavigationManager
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 <div class="full-page">
     <div class="login-container">
@@ -27,29 +28,48 @@
     string Title { get; set; }
     string Context { get; set; }
     string ErrorMessage { get; set; }
+    string Username { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        if (authState?.User?.Identity?.Name != null)
+        {
+            Username = authState.User.Identity.Name;
+        }
+        else
+        {
+            ErrorMessage = "User is not authenticated.";
+        }
+    }
 
     private async Task CreatePost()
     {
+        if(string.IsNullOrEmpty(Username))
+        {
+            ErrorMessage = "User is not authenticated.";
+            return;
+        }
+
         var client = HttpClientFactory.CreateClient("NoSSL");
 
-        var newPost = new
+        var postPayload = new
         {
-            title = this.Title,
-            context = this.Context
+            Title = this.Title,
+            Context = this.Context,
+            Username = Username
         };
 
-        var response = await client.PostAsJsonAsync("Post/CreatePost", newPost);
+        var response = await client.PostAsJsonAsync("Post/CreatePost", postPayload);
 
         if (response.IsSuccessStatusCode)
         {
-            // Handle successful post creation
             ErrorMessage = "Post created successfully!";
-            //Navigate back to main page:
             NavigationManager.NavigateTo("/");
         }
         else
         {
-            ErrorMessage = "An unexpected error occurred.";
+            ErrorMessage = "An unexpected error occurred: " + await response.Content.ReadAsStringAsync();
         }
     }
 }

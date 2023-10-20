@@ -1,115 +1,61 @@
-using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using WebAPI.Models;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace WebAPI.Controllers;
-
-[ApiController]
-[Route("[controller]")]
-public class PostController : ControllerBase
+namespace WebAPI.Controllers
 {
-    private static readonly List<Post> Posts = new List<Post>();
-
-
-    //Get All Posts
-    [HttpGet("GetAllPost")]
-    public ActionResult<IEnumerable<Post>> GetPosts()
+    [ApiController]
+    [Route("[controller]")]
+    public class PostController : ControllerBase
     {
-        //Fields 
-        var foldername = "JSON_Storage";
-        var posts = new List<Post>();
+        private readonly AppDbContext _context;
 
-        //Guard
-        if (Directory.Exists(foldername))
+        public PostController(AppDbContext context)
         {
-            var files = Directory.GetFiles(foldername, "Post_*.json");
-            foreach (var file in files)
+            _context = context;
+        }
+
+        [HttpGet("GetAllPost")]
+        public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
+        {
+            return await _context.Posts.ToListAsync();
+        }
+
+        [HttpGet("ByTitle")]
+        public async Task<ActionResult<IEnumerable<Post>>> GetPostFromTitle(string title)
+        {
+            return await _context.Posts
+                .Where(p => p.Title.Contains(title, StringComparison.OrdinalIgnoreCase))
+                .ToListAsync();
+        }
+
+        [HttpPost("CreatePost")]
+        public async Task<ActionResult<Post>> CreatePost([FromBody] Post newPost)
+        {
+            if (string.IsNullOrEmpty(newPost.Context))
+                return BadRequest("Your description can't be empty");
+
+            if (string.IsNullOrEmpty(newPost.Title))
+                return BadRequest("Your title can't be empty");
+
+            var userExists = await _context.Users.AnyAsync(u => u.Username == newPost.Username);
+            if (!userExists)
+                return BadRequest("User does not exist.");
+
+            try
             {
-                try
-                {
-                    var json = System.IO.File.ReadAllText(file);
-                    var post = JsonSerializer.Deserialize<Post>(json);
-                    posts.Add(post);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
+                _context.Posts.Add(newPost);
+                await _context.SaveChangesAsync();
+                return CreatedAtAction(nameof(GetPostFromTitle), new { title = newPost.Title }, newPost);
+            }
+            catch (Exception e)
+            {
+                return StatusCode(500, $"Internal server error: {e.Message}");
             }
         }
-
-        return posts;
-    }
-
-
-    //Get Specified Post
-    [HttpGet("ByTitle")]
-    public ActionResult<IEnumerable<Post>> GetPostFromTitle(String title)
-    {
-        var foldername = "JSON_Storage";
-        var posts = new List<Post>();
-
-        if (Directory.Exists(foldername))
-        {
-            var files = Directory.GetFiles(foldername, "Post_*.json");
-            foreach (var file in files)
-            {
-                try
-                {
-                    var json = System.IO.File.ReadAllText(file);
-                    var post = JsonSerializer.Deserialize<Post>(json);
-
-                    // Check if the post title contains the search term (case-insensitive)
-                    if (post.title.IndexOf(title, StringComparison.OrdinalIgnoreCase) >= 0)
-                    {
-                        posts.Add(post);
-                    }
-                }
-
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    throw;
-                }
-            }
-        }
-
-        return posts;
-    }
-
-
-    //Create
-    [HttpPost("CreatePost")]
-    public async Task<ActionResult<Post>> CreatePost([FromBody] Post newPost)
-    {
-        //Revised maybe? --------------
-        newPost.ID = Posts.Count + 1;
-        Posts.Add(newPost);
-        //-----------------------------
-        var foldername = "JSON_Storage";
-
-        //Guards
-        if (!Directory.Exists("JSON_Storage"))
-        {
-            Directory.CreateDirectory(foldername);
-        }
-
-        if (string.IsNullOrEmpty(newPost.context))
-        {
-            throw new Exception("Your description cant be empty");
-        }
-
-        if (string.IsNullOrEmpty(newPost.title))
-        {
-            throw new Exception("Your title cant be empty");
-        }
-
-
-        //JSON
-        var json = JsonSerializer.Serialize(newPost);
-        var fileName = $"{foldername}/Post_{newPost.ID}.json";
-        await System.IO.File.WriteAllTextAsync(fileName, json);
-        return CreatedAtAction(nameof(CreatePost), newPost);
     }
 }

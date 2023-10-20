@@ -69,7 +69,6 @@
             else
             {
                 Console.WriteLine("User is not authenticated. Checking local storage for token...");
-                
                 var token = await LocalStorageService.GetItemAsync<string>("ThisIsASuperSecureSecretKey32Char");
                 
                 if (!string.IsNullOrEmpty(token))

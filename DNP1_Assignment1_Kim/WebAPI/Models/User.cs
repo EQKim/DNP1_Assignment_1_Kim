@@ -1,7 +1,16 @@
-namespace WebAPI.Models;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
-public class User
+namespace WebAPI.Models
 {
-    public String Username { get; set;}
-    public String Password { get; set; }
+    public class User
+    {
+        [Key]
+        public string Username { get; set; }
+        public string Password { get; set; }
+
+        // Define Posts as ICollection<Post>
+        public virtual ICollection<Post> Posts { get; set; } = new List<Post>();
+        public virtual ICollection<Comment> Comments { get; set; } = new List<Comment>();
+    }
 }
