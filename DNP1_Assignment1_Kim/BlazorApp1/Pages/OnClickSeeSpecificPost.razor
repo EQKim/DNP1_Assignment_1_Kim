@@ -1,159 +1,164 @@
 @page "/comments/{PostId:int}"
+@using Microsoft.AspNetCore.Components.Authorization
 @inject IHttpClientFactory HttpClientFactory
 @inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
+<div class="center-content">
 
-<h3>@post?.title</h3>
-@if (post == null)
-{
-    <p>Loading post...</p>
-}
-else
-{
-    <div class="post-content">
-        @if (IsGifUrl(post.context))
-        {
-            <img src="@post.context" alt="GIF Content" class="gif-in-container"/>
-        }
-        else
-        {
-            <p>@post.context</p>
-        }
-    </div>
-    <h4>Comments</h4>
-    @if (comments == null)
+    <h3>@post?.title</h3>
+    @if (post == null)
     {
-        <p>Loading comments...</p>
-    }
-    else if (!comments.Any())
-    {
-        <p>No comments found for this post.</p>
+        <p>Loading post...</p>
     }
     else
     {
-        foreach (var comment in comments)
-        {
-            <div class="comment-container">@comment.CommentText</div>
-        }
-    }
-
-    <div class="add-comment-section">
-        <textarea @bind="newComment" placeholder="Add a comment..."></textarea>
-        <button @onclick="AddComment">Submit Comment</button>
-    </div>
-}
-
-@code {
-
-    [Parameter]
-    public int PostId { get; set; }
-
-    private Post post;
-    private List<Comment> comments;
-    private string newComment;
-
-    protected override async Task OnInitializedAsync()
-    {
-        await LoadPostAndComments();
-    }
-
-    private async Task LoadPostAndComments()
-    {
-        var client = HttpClientFactory.CreateClient("NoSSL");
-    
-    // Fetching the post
-        var postResponse = await client.GetAsync($"Post/GetById?id={PostId}");
-        if (postResponse.IsSuccessStatusCode)
-        {
-            post = await postResponse.Content.ReadFromJsonAsync<Post>();
-        }
-        else
-        {
-            if (postResponse.StatusCode == System.Net.HttpStatusCode.NotFound)
+        <div class="post-content">
+            @if (IsGifUrl(post.context))
             {
-                Console.WriteLine($"Post with ID {PostId} not found.");
-                Navigation.NavigateTo("/NotFound"); // Redirect to a 404 page or any other page you want
-                return; // Return here to prevent further processing since the post is not found
+                <img src="@post.context" alt="GIF Content" class="gif-in-container"/>
             }
             else
             {
-                Console.WriteLine($"Error fetching post. HTTP Status: {postResponse.StatusCode}");
-                return; // Stop the method if the post fetching failed
+                <p>@post.context</p>
             }
-        }
+        </div>
 
-    // Continue to fetch the comments for the post (Existing code remains unchanged here)
-        var commentsResponse = await client.GetAsync($"Comment/ByPost?postId={PostId}");
-        if (commentsResponse.IsSuccessStatusCode)
+        <h4>Comments</h4>
+        @if (comments == null)
         {
-            if (commentsResponse.StatusCode != System.Net.HttpStatusCode.NoContent)
-            {
-                comments = await commentsResponse.Content.ReadFromJsonAsync<List<Comment>>();
-            }
-            else
-            {
-                Console.WriteLine("No comments found for this post.");
-                comments = new List<Comment>();  // Initialize the comments list as empty
-            }
+            <p>Loading comments...</p>
+        }
+        else if (!comments.Any())
+        {
+            <p>No comments found for this post.</p>
         }
         else
         {
-            Console.WriteLine($"Error fetching comments. HTTP Status: {commentsResponse.StatusCode}");
+            foreach (var comment in comments)
+            {
+                <div class="comment-container">@comment.CommentText</div>
+            }
         }
+
+        <AuthorizeView>
+            <Authorized>
+                <div class="add-comment-section">
+                    <textarea @bind="newComment" placeholder="Add a comment..."></textarea>
+                    <button @onclick="AddComment">Submit Comment</button>
+                </div>
+            </Authorized>
+            <NotAuthorized>
+                <p>You must be logged in to add a comment.</p>
+            </NotAuthorized>
+        </AuthorizeView>
     }
+</div>
 
 
 
-
-    private async Task AddComment()
+    @code
     {
-        if (string.IsNullOrWhiteSpace(newComment))
-            return;
+        [Parameter]
+        
 
-    // Assume an API endpoint "Comment/Create" to add new comment
-        try
+        public int PostId { get; set; }
+
+        private Post post;
+        private List<Comment> comments;
+        private string newComment;
+        private string Username { get; set; }
+
+        protected override async Task OnInitializedAsync()
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            Username = authState?.User?.Identity?.IsAuthenticated == true ? authState.User.Identity.Name : null;
+            if (string.IsNullOrWhiteSpace(Username))
+            {
+                Console.WriteLine("User is not authenticated.");
+            }
+            await LoadPostAndComments();
+        }
+
+        private async Task LoadPostAndComments()
         {
             var client = HttpClientFactory.CreateClient("NoSSL");
-            var commentToAdd = new Comment { CommentText = newComment, PostId = PostId };
-            var response = await client.PostAsJsonAsync("Comment/Create", commentToAdd);
 
+            var postResponse = await client.GetAsync($"Post/GetById?id={PostId}");
+            if (postResponse.IsSuccessStatusCode)
+            {
+                post = await postResponse.Content.ReadFromJsonAsync<Post>();
+            }
+            else
+            {
+                HandleErrorResponse(postResponse, $"Post with ID {PostId}");
+            }
+
+            var commentsResponse = await client.GetAsync($"Comment/ByPost?postId={PostId}");
+            if (commentsResponse.IsSuccessStatusCode)
+            {
+                comments = await commentsResponse.Content.ReadFromJsonAsync<List<Comment>>() ?? new List<Comment>();
+            }
+            else
+            {
+                HandleErrorResponse(commentsResponse, "Fetching comments");
+            }
+        }
+
+        private void HandleErrorResponse(HttpResponseMessage response, string operationDescription)
+        {
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                Console.WriteLine($"{operationDescription} not found.");
+                Navigation.NavigateTo("/NotFound");
+            }
+            else
+            {
+                Console.WriteLine($"Error during {operationDescription}. HTTP Status: {response.StatusCode}");
+            }
+        }
+
+        private async Task AddComment()
+        {
+            if (string.IsNullOrWhiteSpace(newComment) || string.IsNullOrWhiteSpace(Username))
+                return;
+
+            var client = HttpClientFactory.CreateClient("NoSSL");
+            var commentToAdd = new Comment { CommentText = newComment, PostID = PostId, Username = Username };
+
+            var response = await client.PostAsJsonAsync("Comment/Create", commentToAdd);
             if (response.IsSuccessStatusCode)
             {
-                comments.Add(commentToAdd);
-                newComment = ""; // Clear the text area after successful submission
+                await LoadPostAndComments();
+                newComment = "";
             }
             else
             {
                 Console.WriteLine("Error while adding comment: " + await response.Content.ReadAsStringAsync());
             }
         }
-        catch (Exception e)
+
+        private bool IsGifUrl(string context)
         {
-            Console.WriteLine("Error while adding comment: " + e.Message);
+            if (string.IsNullOrWhiteSpace(context))
+            {
+                return false;
+            }
+            return (context.StartsWith("http://") || context.StartsWith("https://")) && context.EndsWith(".gif");
         }
-    }
 
-    private bool IsGifUrl(string context)
-    {
-        if (string.IsNullOrWhiteSpace(context))
+        public class Post
         {
-            return false;
+            public int PostID { get; set; }
+            public string title { get; set; }
+            public string context { get; set; }
         }
-        return (context.StartsWith("http://") || context.StartsWith("https://")) && context.EndsWith(".gif");
-    }
 
-    public class Post
-    {
-        public int ID { get; set; }
-        public string title { get; set; }
-        public string context { get; set; }
-    }
-
-    public class Comment
-    {
-        public int CommentId { get; set; }
-        public string CommentText { get; set; }
-        public int PostId { get; set; }
-    }
-
+        public class Comment
+        {
+            public int CommentID { get; set; }
+            public string CommentText { get; set; }
+            public string Username { get; set; }
+            public int PostID { get; set; }
+        }
 }

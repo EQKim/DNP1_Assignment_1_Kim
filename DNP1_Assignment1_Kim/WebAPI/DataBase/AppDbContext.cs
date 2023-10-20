@@ -19,12 +19,12 @@ public class AppDbContext : DbContext
             entity.HasMany(e => e.Posts)
                 .WithOne()
                 .HasForeignKey(p => p.Username)
-                .OnDelete(DeleteBehavior.Cascade); // Adjust as per your requirements
+                .OnDelete(DeleteBehavior.Cascade); 
 
             entity.HasMany(e => e.Comments)
                 .WithOne()
                 .HasForeignKey(c => c.Username)
-                .OnDelete(DeleteBehavior.Cascade); // Adjust as per your requirements
+                .OnDelete(DeleteBehavior.Cascade);
         });
 
         // Configuration for Post entity
@@ -38,29 +38,28 @@ public class AppDbContext : DbContext
 
             entity.HasMany(e => e.Comments)
                 .WithOne()
-                .HasForeignKey(c => c.PostId)
-                .OnDelete(DeleteBehavior.Cascade); // Adjust as per your requirements
+                .HasForeignKey(c => c.PostID)
+                .OnDelete(DeleteBehavior.Cascade);
         });
 
         // Configuration for Comment entity
         modelBuilder.Entity<Comment>(entity =>
         {
             entity.ToTable("comments");
-            entity.Property(e => e.CommentId).HasColumnName("comment_id");
-            entity.Property(e => e.PostId).HasColumnName("post_id");
+            entity.Property(e => e.CommentID).HasColumnName("comment_id");
+            entity.Property(e => e.PostID).HasColumnName("post_id");
             entity.Property(e => e.Username).HasColumnName("username");
             entity.Property(e => e.CommentText).HasColumnName("comment");
 
-            // Since we're using the Username as a foreign key, 
-            // the configuration should be in line with the others.
-            entity.HasOne<User>()
-                .WithMany()
+            entity.HasOne<User>() 
+                .WithMany(u => u.Comments)
                 .HasForeignKey(e => e.Username)
-                .OnDelete(DeleteBehavior.Cascade); // Adjust as per your requirements
+                .OnDelete(DeleteBehavior.Cascade); 
 
-            entity.HasOne(e => e.Post)
+            entity.HasOne<Post>() 
                 .WithMany(p => p.Comments)
-                .HasForeignKey(e => e.PostId);
+                .HasForeignKey(e => e.PostID)
+                .OnDelete(DeleteBehavior.Cascade); 
         });
 
         base.OnModelCreating(modelBuilder);
@@ -69,5 +68,4 @@ public class AppDbContext : DbContext
     public DbSet<Post> Posts { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Comment> Comments { get; set; }
-
 }

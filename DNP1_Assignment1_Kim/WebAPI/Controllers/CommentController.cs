@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using WebAPI.Models;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace WebAPI.Controllers
 {
@@ -16,7 +19,6 @@ namespace WebAPI.Controllers
             _context = context;
         }
 
-        
         // Create Comment
         [HttpPost("Create")]
         public async Task<ActionResult<Comment>> CreateComment([FromBody] Comment newComment)
@@ -27,7 +29,7 @@ namespace WebAPI.Controllers
             }
 
             // Optionally, you could check if the associated post exists
-            var postExists = await _context.Posts.AnyAsync(p => p.PostID == newComment.PostId);
+            var postExists = await _context.Posts.AnyAsync(p => p.PostID == newComment.PostID);
             if (!postExists)
             {
                 return BadRequest("Associated post does not exist.");
@@ -51,11 +53,11 @@ namespace WebAPI.Controllers
                 return StatusCode(500, $"Internal server error: {e.Message}");
             }
         }
-        
+
         [HttpGet("ByPost")]
-        public async Task<ActionResult<IEnumerable<Comment>>> GetCommentsByPostId(int postId)
+        public async Task<ActionResult<IEnumerable<Comment>>> GetCommentsByPostId(int post)
         {
-            var comments = await _context.Comments.Where(c => c.PostId == postId).ToListAsync();
+            var comments = await _context.Comments.Where(c => c.PostID == post).ToListAsync();
             return Ok(comments);
         }
     }

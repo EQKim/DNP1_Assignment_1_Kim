@@ -19,7 +19,7 @@
                 <Authorized>
                     <NavLink class="custom-nav-linkV2" href="">
                         <img src="UserIcon.png" alt="User Icon" class="login-image"/>
-                        @_username
+                        @username
                     </NavLink>
 
                     <button class="custom-nav-linkV2" @onclick="LogoutAsync">
@@ -49,7 +49,7 @@
 </div>
 
 @code {
-    private string _username = "Loading...";
+    private string username = "Loading...";
     private HttpClient Http => HttpClientFactory.CreateClient("NoSSL");
 
     protected override async Task OnInitializedAsync()
@@ -64,7 +64,7 @@
 
             if (state.User.Identity.IsAuthenticated)
             {
-                _username = state.User.Identity.Name ?? "Unknown";
+                username = state.User.Identity.Name ?? "Unknown";
             }
             else
             {

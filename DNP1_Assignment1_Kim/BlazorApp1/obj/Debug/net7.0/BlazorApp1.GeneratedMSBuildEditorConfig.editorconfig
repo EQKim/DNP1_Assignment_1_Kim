@@ -20,10 +20,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/OnClickSeeSpecificPost.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT25DbGlja1NlZVNwZWNpZmljUG9zdC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -43,6 +39,10 @@ build_metadata.AdditionalFiles.CssScope = b-70cdui5b69
 [C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/LoginPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5QYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-480z8q4hvn
+
+[C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/OnClickSeeSpecificPost.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT25DbGlja1NlZVNwZWNpZmljUG9zdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-1yoqemvvve
 
 [C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/PostMainPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9zdE1haW5QYWdlLnJhem9y

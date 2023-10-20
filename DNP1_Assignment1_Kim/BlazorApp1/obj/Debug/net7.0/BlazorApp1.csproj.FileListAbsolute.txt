@@ -74,3 +74,4 @@ C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\bin\D
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\BlazorApp1.csproj.AssemblyReference.cache
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\BlazorApp1.csproj.CopyComplete
 C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\scopedcss\Pages\CreatePostPage.razor.rz.scp.css
+C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\obj\Debug\net7.0\scopedcss\Pages\OnClickSeeSpecificPost.razor.rz.scp.css
