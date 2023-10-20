@@ -12,26 +12,30 @@ namespace WebAPI.Controllers
     [Route("[controller]")]
     public class PostController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly AppDbContext context;
 
         public PostController(AppDbContext context)
         {
-            _context = context;
+            this.context = context;
         }
 
         [HttpGet("GetAllPost")]
         public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
         {
-            return await _context.Posts.ToListAsync();
+            return await context.Posts.ToListAsync();
         }
 
         [HttpGet("ByTitle")]
         public async Task<ActionResult<IEnumerable<Post>>> GetPostFromTitle(string title)
         {
-            return await _context.Posts
-                .Where(p => p.Title.Contains(title, StringComparison.OrdinalIgnoreCase))
+            title = title.ToLower();
+
+            return await context.Posts
+                .Where(p => EF.Functions.Like(p.Title.ToLower(), $"%{title}%"))
                 .ToListAsync();
         }
+
+
 
         [HttpPost("CreatePost")]
         public async Task<ActionResult<Post>> CreatePost([FromBody] Post newPost)
@@ -42,14 +46,14 @@ namespace WebAPI.Controllers
             if (string.IsNullOrEmpty(newPost.Title))
                 return BadRequest("Your title can't be empty");
 
-            var userExists = await _context.Users.AnyAsync(u => u.Username == newPost.Username);
+            var userExists = await context.Users.AnyAsync(u => u.Username == newPost.Username);
             if (!userExists)
                 return BadRequest("User does not exist.");
 
             try
             {
-                _context.Posts.Add(newPost);
-                await _context.SaveChangesAsync();
+                context.Posts.Add(newPost);
+                await context.SaveChangesAsync();
                 return CreatedAtAction(nameof(GetPostFromTitle), new { title = newPost.Title }, newPost);
             }
             catch (Exception e)
