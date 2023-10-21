@@ -6,6 +6,8 @@
     width: 100%;
 }
 
+
+
 .post-container {
     width: 50%; 
     margin: 20px auto; 
@@ -86,4 +88,19 @@
     height: auto; 
     display: block;
     max-width: 100%; 
+}
+
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* ensures the title and username use the full width of the container */
+}
+
+.username {
+    font-size: 16px;
+    color: darkslateblue;
+    font-weight: bold;
+    font-style: italic;
+    margin-left: 10px; /* Gives a small space between title and username */
 }

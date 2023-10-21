@@ -14,7 +14,10 @@
     else
     {
         <div class="post-content">
-            <h3>@post?.title</h3>
+            <div class="title-container">
+                <h3>@post?.title</h3>
+                <span class="username">@post?.Username</span>
+            </div>
             @if (IsGifUrl(post.context))
             {
                 <img src="@post.context" alt="GIF Content" class="gif-in-container"/>
@@ -24,6 +27,7 @@
                 <p>@post.context</p>
             }
         </div>
+
 
         <h4>Comments</h4>
         @if (comments == null)
@@ -150,6 +154,7 @@
         public int PostID { get; set; }
         public string title { get; set; }
         public string context { get; set; }
+        public string Username { get; set; }
     }
 
     public class Comment

@@ -76,3 +76,19 @@
 .add-comment-section button:hover[b-1yoqemvvve] {
     background-color: #435c7d; 
 }
+
+.title-container[b-1yoqemvvve] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* creates space between title and content */
+}
+
+
+.username[b-1yoqemvvve] {
+    font-size: 16px;
+    color: darkslateblue;
+    font-weight: bold;
+    font-style: italic;
+    margin-left: 10px; /* Gives a small space between title and username */
+}

@@ -10,7 +10,6 @@
     </div>
 </div>
 
-
 <div class="posts-container">
     @if (posts == null)
     {
@@ -25,16 +24,19 @@
         @foreach (var post in posts)
         {
             <div class="post-container">
-                <h4 style="font-weight: bold">@post.title</h4>
+                <div class="title-container">
+                    <h4 style="font-weight: bold">@post.title</h4>
+                    <span class="username">@post.Username</span>
+                </div>
 
-               @if (IsGifUrl(post.context))
-               {
-                   <img src="@post.context" alt="GIF Content" class="gif-in-container" />
-               }
-               else
-               {
-                   <p>@post.context</p>
-               }
+                @if (IsGifUrl(post.context))
+                {
+                    <img src="@post.context" alt="GIF Content" class="gif-in-container" />
+                }
+                else
+                {
+                    <p>@post.context</p>
+                }
 
                 <button @onclick="() => ViewSpecificPost(post.PostID)" class="see-comments-btn">See Comments</button>
             </div>
@@ -111,5 +113,6 @@
         public int PostID { get; set; }
         public string title { get; set; }
         public string context { get; set; }
+        public string Username { get; set; }
     }
 }

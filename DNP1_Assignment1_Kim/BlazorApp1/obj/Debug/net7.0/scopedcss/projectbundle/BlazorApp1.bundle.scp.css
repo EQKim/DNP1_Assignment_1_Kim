@@ -255,6 +255,22 @@ button:hover[b-480z8q4hvn] {
 .add-comment-section button:hover[b-1yoqemvvve] {
     background-color: #435c7d; 
 }
+
+.title-container[b-1yoqemvvve] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* creates space between title and content */
+}
+
+
+.username[b-1yoqemvvve] {
+    font-size: 16px;
+    color: darkslateblue;
+    font-weight: bold;
+    font-style: italic;
+    margin-left: 10px; /* Gives a small space between title and username */
+}
 /* _content/BlazorApp1/Pages/PostMainPage.razor.rz.scp.css */
 .posts-container[b-318081eyz9] {
     display: flex;
@@ -263,6 +279,8 @@ button:hover[b-480z8q4hvn] {
     align-items: center;
     width: 100%;
 }
+
+
 
 .post-container[b-318081eyz9] {
     width: 50%; 
@@ -344,6 +362,21 @@ button:hover[b-480z8q4hvn] {
     height: auto; 
     display: block;
     max-width: 100%; 
+}
+
+.title-container[b-318081eyz9] {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* ensures the title and username use the full width of the container */
+}
+
+.username[b-318081eyz9] {
+    font-size: 16px;
+    color: darkslateblue;
+    font-weight: bold;
+    font-style: italic;
+    margin-left: 10px; /* Gives a small space between title and username */
 }
 /* _content/BlazorApp1/Shared/MainLayout.razor.rz.scp.css */
 .page[b-45rkf8v3vv] {
