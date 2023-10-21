@@ -178,8 +178,8 @@ button:hover[b-480z8q4hvn] {
 }
 /* _content/BlazorApp1/Pages/OnClickSeeSpecificPost.razor.rz.scp.css */
 .center-content[b-1yoqemvvve] {
-    width: 70%; /* Adjusts the central content's width. You can change this according to preference. */
-    margin: 0 auto; /* Centers the content horizontally. */
+    width: 70%; 
+    margin: 0 auto; 
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -189,8 +189,8 @@ button:hover[b-480z8q4hvn] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 50%; /* adjust as needed */
-    margin: 0 auto; /* centers the header */
+    width: 50%; 
+    margin: 0 auto; 
 }
 
 .post-content[b-1yoqemvvve] {
@@ -206,9 +206,9 @@ button:hover[b-480z8q4hvn] {
 
 .gif-in-container[b-1yoqemvvve] {
     width: 100%;
-    height: auto; /* allows the GIF to maintain its aspect ratio */
+    height: auto; 
     display: block;
-    max-width: 100%; /* ensures the GIF doesn't overflow its container */
+    max-width: 100%; 
 }
 
 .comment-container[b-1yoqemvvve] {
@@ -222,8 +222,8 @@ button:hover[b-480z8q4hvn] {
 
 
 .add-comment-section[b-1yoqemvvve] {
-    width: 50%; /* adjust as needed */
-    margin: 20px auto; /* centers the section horizontally */
+    width: 50%; 
+    margin: 20px auto; 
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05);
@@ -234,17 +234,17 @@ button:hover[b-480z8q4hvn] {
 
 .add-comment-section textarea[b-1yoqemvvve] {
     width: 100%;
-    height: 100px; /* adjust as per your need */
+    height: 100px; 
     padding: 5px;
     margin-bottom: 10px;
     border-radius: 3px;
-    resize: vertical; /* allows only vertical resize */
+    resize: vertical; 
 }
 
 .add-comment-section button[b-1yoqemvvve] {
     align-self: flex-end;
     padding: 5px 15px;
-    background-color: darkslateblue; /* color continuity */
+    background-color: darkslateblue; 
     color: #ffffff;
     border: none;
     border-radius: 3px;
@@ -253,7 +253,7 @@ button:hover[b-480z8q4hvn] {
 }
 
 .add-comment-section button:hover[b-1yoqemvvve] {
-    background-color: #435c7d; /* Slightly lighter shade on hover */
+    background-color: #435c7d; 
 }
 /* _content/BlazorApp1/Pages/PostMainPage.razor.rz.scp.css */
 .posts-container[b-318081eyz9] {
@@ -265,54 +265,85 @@ button:hover[b-480z8q4hvn] {
 }
 
 .post-container[b-318081eyz9] {
-    width: 50%; /* adjust as needed */
-    margin: 20px auto; /* centers the container horizontally */
+    width: 50%; 
+    margin: 20px auto; 
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     padding: 15px;
     border-radius: 5px;
     border: 2px solid darkslateblue;
-    position: relative; /* added to position the GIF inside it */
-    display: flex;  /* make it a flex container */
-    flex-direction: column; /* orient the children (content, image, button) vertically */
-    justify-content: space-between; /* optional: creates maximum space between items */
+    position: relative; 
+    display: flex;  
+    flex-direction: column; 
+    justify-content: space-between; 
 }
+
+.search-container[b-318081eyz9] {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Provides a gap between the input and the button */
+}
+
+
+.search-input:focus[b-318081eyz9] {
+    border-color: #435c7d; /* Changes border color on focus */
+    box-shadow: 0 0 10px rgba(67, 92, 125, 0.3); /* Adds a subtle glow when focused */
+}
+
+.search-btn[b-318081eyz9] {
+    padding: 8px 15px;
+    background-color: darkslateblue;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px; /* Consistent font size with the input field */
+    transition: 0.3s;
+}
+
+.search-btn:hover[b-318081eyz9] {
+    background-color: #435c7d; /* slightly lighter shade on hover */
+}
+
 
 .header[b-318081eyz9] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 50%; /* adjust as needed */
-    margin: 0 auto; /* centers the header */
+    width: 50%; 
+    margin: 0 auto; 
 }
 
 .search-input[b-318081eyz9] {
     width: 74%; /* adjust as needed */
-    padding: 5px;
-    padding-left: 3px;
+    padding: 8px 12px;
     border-radius: 3px;
+    border: 2px solid darkslateblue;
+    font-size: 14px; /* Making sure the text is readable */
+    transition: 0.3s;
+    outline: none; /* Removes the browser default outline */
 }
 
 .see-comments-btn[b-318081eyz9] {
     margin-top: 10px;
     padding: 5px 15px;
-    background-color: darkslateblue; /* consistent color */
+    background-color: darkslateblue; 
     color: #ffffff;
     border: none;
     border-radius: 3px;
     cursor: pointer;
     transition: 0.3s;
-    align-self: flex-end; /* this will now push the button to the right */
+    align-self: flex-end; 
 }
 
 .see-comments-btn:hover[b-318081eyz9] {
-    background-color: #435c7d; /* slightly lighter shade on hover */
+    background-color: #435c7d;
 }
 
 .gif-in-container[b-318081eyz9] {
     width: 100%;
-    height: auto; /* allows the GIF to maintain its aspect ratio */
+    height: auto; 
     display: block;
-    max-width: 100%; /* ensures the GIF doesn't overflow its container */
+    max-width: 100%; 
 }
 /* _content/BlazorApp1/Shared/MainLayout.razor.rz.scp.css */
 .page[b-45rkf8v3vv] {

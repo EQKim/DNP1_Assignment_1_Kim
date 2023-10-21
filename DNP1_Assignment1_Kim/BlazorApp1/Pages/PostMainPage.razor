@@ -4,11 +4,12 @@
 
 <div class="header">
     <h3 style="font-weight: bold;">Posts</h3>
-    <div>
+    <div class="search-container">
         <input type="text" class="search-input" @bind="searchTerm" placeholder="Search by title..."/>
-        <button @onclick="SearchPosts">Search</button>
+        <button class="search-btn" @onclick="SearchPosts">Search</button>
     </div>
 </div>
+
 
 <div class="posts-container">
     @if (posts == null)
