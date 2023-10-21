@@ -55,9 +55,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("ByPost")]
-        public async Task<ActionResult<IEnumerable<Comment>>> GetCommentsByPostId(int post)
+        public async Task<ActionResult<IEnumerable<Comment>>> GetCommentsByPostId(int postId)
         {
-            var comments = await _context.Comments.Where(c => c.PostID == post).ToListAsync();
+            var comments = await _context.Comments.Where(c => c.PostID == postId).ToListAsync();
             return Ok(comments);
         }
     }

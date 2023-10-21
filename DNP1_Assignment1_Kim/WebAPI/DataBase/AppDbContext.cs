@@ -49,7 +49,8 @@ public class AppDbContext : DbContext
             entity.Property(e => e.CommentID).HasColumnName("comment_id");
             entity.Property(e => e.PostID).HasColumnName("post_id");
             entity.Property(e => e.Username).HasColumnName("username");
-            entity.Property(e => e.CommentText).HasColumnName("comment");
+            entity.Property(e => e.CommentText).HasColumnName("comment_text");
+
 
             entity.HasOne<User>() 
                 .WithMany(u => u.Comments)

@@ -177,6 +177,14 @@ button:hover[b-480z8q4hvn] {
     background-color: #005a9b;
 }
 /* _content/BlazorApp1/Pages/OnClickSeeSpecificPost.razor.rz.scp.css */
+.center-content[b-1yoqemvvve] {
+    width: 70%; /* Adjusts the central content's width. You can change this according to preference. */
+    margin: 0 auto; /* Centers the content horizontally. */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .header[b-1yoqemvvve] {
     display: flex;
     justify-content: space-between;
@@ -186,13 +194,15 @@ button:hover[b-480z8q4hvn] {
 }
 
 .post-content[b-1yoqemvvve] {
-    width: 60%;
-    padding: 10px;
+    width: 50%;
+    padding: 15px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
-    border: 1px solid darkslateblue;
+    border: 2px solid darkslateblue;
     margin-bottom: 15px;
+    position: relative;
 }
+
 
 .gif-in-container[b-1yoqemvvve] {
     width: 100%;
@@ -202,13 +212,14 @@ button:hover[b-480z8q4hvn] {
 }
 
 .comment-container[b-1yoqemvvve] {
-    width: 90%; /* adjust as needed */
-    margin: 10px auto; /* centers the container horizontally */
+    width: 60%;
+    margin: 10px auto;
+    padding: 10px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05);
-    padding: 8px;
     border-radius: 3px;
     border: 1px solid lightgray;
 }
+
 
 .add-comment-section[b-1yoqemvvve] {
     width: 50%; /* adjust as needed */
@@ -232,11 +243,23 @@ button:hover[b-480z8q4hvn] {
 
 .add-comment-section button[b-1yoqemvvve] {
     align-self: flex-end;
+    padding: 5px 15px;
+    background-color: darkslateblue; /* color continuity */
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.add-comment-section button:hover[b-1yoqemvvve] {
+    background-color: #435c7d; /* Slightly lighter shade on hover */
 }
 /* _content/BlazorApp1/Pages/PostMainPage.razor.rz.scp.css */
 .posts-container[b-318081eyz9] {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
@@ -249,8 +272,10 @@ button:hover[b-480z8q4hvn] {
     border-radius: 5px;
     border: 2px solid darkslateblue;
     position: relative; /* added to position the GIF inside it */
+    display: flex;  /* make it a flex container */
+    flex-direction: column; /* orient the children (content, image, button) vertically */
+    justify-content: space-between; /* optional: creates maximum space between items */
 }
-
 
 .header[b-318081eyz9] {
     display: flex;
@@ -268,9 +293,19 @@ button:hover[b-480z8q4hvn] {
 }
 
 .see-comments-btn[b-318081eyz9] {
-    display: block;
     margin-top: 10px;
-    float: right;
+    padding: 5px 15px;
+    background-color: darkslateblue; /* consistent color */
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.3s;
+    align-self: flex-end; /* this will now push the button to the right */
+}
+
+.see-comments-btn:hover[b-318081eyz9] {
+    background-color: #435c7d; /* slightly lighter shade on hover */
 }
 
 .gif-in-container[b-318081eyz9] {
@@ -279,9 +314,6 @@ button:hover[b-480z8q4hvn] {
     display: block;
     max-width: 100%; /* ensures the GIF doesn't overflow its container */
 }
-
-
-
 /* _content/BlazorApp1/Shared/MainLayout.razor.rz.scp.css */
 .page[b-45rkf8v3vv] {
     position: relative;

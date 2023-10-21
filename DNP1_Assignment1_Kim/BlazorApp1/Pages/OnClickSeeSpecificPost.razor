@@ -6,7 +6,7 @@
 
 <div class="center-content">
 
-    <h3>@post?.title</h3>
+
     @if (post == null)
     {
         <p>Loading post...</p>
@@ -14,6 +14,7 @@
     else
     {
         <div class="post-content">
+            <h3>@post?.title</h3>
             @if (IsGifUrl(post.context))
             {
                 <img src="@post.context" alt="GIF Content" class="gif-in-container"/>
@@ -37,7 +38,7 @@
         {
             foreach (var comment in comments)
             {
-                <div class="comment-container">@comment.CommentText</div>
+                <div class="comment-container">@($"{comment.Username}: {comment.CommentText}")</div>
             }
         }
 
@@ -56,109 +57,106 @@
 </div>
 
 
+@code
+{
+    [Parameter]
+    public int PostId { get; set; }
 
-    @code
+    private Post post;
+    private List<Comment> comments;
+    private string newComment;
+    private string Username { get; set; }
+
+    protected override async Task OnInitializedAsync()
     {
-        [Parameter]
-        
-
-        public int PostId { get; set; }
-
-        private Post post;
-        private List<Comment> comments;
-        private string newComment;
-        private string Username { get; set; }
-
-        protected override async Task OnInitializedAsync()
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        Username = authState?.User?.Identity?.IsAuthenticated == true ? authState.User.Identity.Name : null;
+        if (string.IsNullOrWhiteSpace(Username))
         {
-            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-            Username = authState?.User?.Identity?.IsAuthenticated == true ? authState.User.Identity.Name : null;
-            if (string.IsNullOrWhiteSpace(Username))
-            {
-                Console.WriteLine("User is not authenticated.");
-            }
+            Console.WriteLine("User is not authenticated.");
+        }
+        await LoadPostAndComments();
+    }
+
+    private async Task LoadPostAndComments()
+    {
+        var client = HttpClientFactory.CreateClient("NoSSL");
+
+        var postResponse = await client.GetAsync($"Post/GetById?id={PostId}");
+        if (postResponse.IsSuccessStatusCode)
+        {
+            post = await postResponse.Content.ReadFromJsonAsync<Post>();
+        }
+        else
+        {
+            HandleErrorResponse(postResponse, $"Post with ID {PostId}");
+        }
+
+        var commentsResponse = await client.GetAsync($"Comment/ByPost?post={PostId}");
+        if (commentsResponse.IsSuccessStatusCode)
+        {
+            comments = await commentsResponse.Content.ReadFromJsonAsync<List<Comment>>() ?? new List<Comment>();
+        }
+        else
+        {
+            HandleErrorResponse(commentsResponse, "Fetching comments");
+        }
+    }
+
+    private void HandleErrorResponse(HttpResponseMessage response, string operationDescription)
+    {
+        if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+        {
+            Console.WriteLine($"{operationDescription} not found.");
+            Navigation.NavigateTo("/NotFound");
+        }
+        else
+        {
+            Console.WriteLine($"Error during {operationDescription}. HTTP Status: {response.StatusCode}");
+        }
+    }
+
+    private async Task AddComment()
+    {
+        if (string.IsNullOrWhiteSpace(newComment) || string.IsNullOrWhiteSpace(Username))
+            return;
+
+        var client = HttpClientFactory.CreateClient("NoSSL");
+        var commentToAdd = new Comment { CommentText = newComment, PostID = PostId, Username = Username };
+
+        var response = await client.PostAsJsonAsync("Comment/Create", commentToAdd);
+        if (response.IsSuccessStatusCode)
+        {
             await LoadPostAndComments();
+            newComment = "";
         }
-
-        private async Task LoadPostAndComments()
+        else
         {
-            var client = HttpClientFactory.CreateClient("NoSSL");
-
-            var postResponse = await client.GetAsync($"Post/GetById?id={PostId}");
-            if (postResponse.IsSuccessStatusCode)
-            {
-                post = await postResponse.Content.ReadFromJsonAsync<Post>();
-            }
-            else
-            {
-                HandleErrorResponse(postResponse, $"Post with ID {PostId}");
-            }
-
-            var commentsResponse = await client.GetAsync($"Comment/ByPost?postId={PostId}");
-            if (commentsResponse.IsSuccessStatusCode)
-            {
-                comments = await commentsResponse.Content.ReadFromJsonAsync<List<Comment>>() ?? new List<Comment>();
-            }
-            else
-            {
-                HandleErrorResponse(commentsResponse, "Fetching comments");
-            }
+            Console.WriteLine("Error while adding comment: " + await response.Content.ReadAsStringAsync());
         }
+    }
 
-        private void HandleErrorResponse(HttpResponseMessage response, string operationDescription)
+    private bool IsGifUrl(string context)
+    {
+        if (string.IsNullOrWhiteSpace(context))
         {
-            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
-            {
-                Console.WriteLine($"{operationDescription} not found.");
-                Navigation.NavigateTo("/NotFound");
-            }
-            else
-            {
-                Console.WriteLine($"Error during {operationDescription}. HTTP Status: {response.StatusCode}");
-            }
+            return false;
         }
+        return (context.StartsWith("http://") || context.StartsWith("https://")) && context.EndsWith(".gif");
+    }
 
-        private async Task AddComment()
-        {
-            if (string.IsNullOrWhiteSpace(newComment) || string.IsNullOrWhiteSpace(Username))
-                return;
+    public class Post
+    {
+        public int PostID { get; set; }
+        public string title { get; set; }
+        public string context { get; set; }
+    }
 
-            var client = HttpClientFactory.CreateClient("NoSSL");
-            var commentToAdd = new Comment { CommentText = newComment, PostID = PostId, Username = Username };
-
-            var response = await client.PostAsJsonAsync("Comment/Create", commentToAdd);
-            if (response.IsSuccessStatusCode)
-            {
-                await LoadPostAndComments();
-                newComment = "";
-            }
-            else
-            {
-                Console.WriteLine("Error while adding comment: " + await response.Content.ReadAsStringAsync());
-            }
-        }
-
-        private bool IsGifUrl(string context)
-        {
-            if (string.IsNullOrWhiteSpace(context))
-            {
-                return false;
-            }
-            return (context.StartsWith("http://") || context.StartsWith("https://")) && context.EndsWith(".gif");
-        }
-
-        public class Post
-        {
-            public int PostID { get; set; }
-            public string title { get; set; }
-            public string context { get; set; }
-        }
-
-        public class Comment
-        {
-            public int CommentID { get; set; }
-            public string CommentText { get; set; }
-            public string Username { get; set; }
-            public int PostID { get; set; }
-        }
+    public class Comment
+    {
+        public int CommentID { get; set; }
+        public string CommentText { get; set; }
+        public string Username { get; set; }
+        public int PostID { get; set; }
+    }
 }
