@@ -4,9 +4,11 @@
 @inject NavigationManager Navigation
 @inject AuthenticationStateProvider AuthenticationStateProvider
 
+
+<a href="/" class="button-style" style="float: left">Back</a>
+
+
 <div class="center-content">
-
-
     @if (post == null)
     {
         <p>Loading post...</p>
@@ -29,7 +31,7 @@
         </div>
 
 
-        <h4>Comments</h4>
+        <h4 style="font-weight: bold; font-style: italic" >Comments</h4>
         @if (comments == null)
         {
             <p>Loading comments...</p>
@@ -96,7 +98,7 @@
             HandleErrorResponse(postResponse, $"Post with ID {PostId}");
         }
 
-        var commentsResponse = await client.GetAsync($"Comment/ByPost?post={PostId}");
+        var commentsResponse = await client.GetAsync($"Comment/ByPost?postId={PostId}");
         if (commentsResponse.IsSuccessStatusCode)
         {
             comments = await commentsResponse.Content.ReadFromJsonAsync<List<Comment>>() ?? new List<Comment>();

@@ -1,3 +1,28 @@
+div.comment-container{
+    border: 2px solid darkslateblue;
+    font-weight: bold;
+    font-style: italic;
+    width: 70%;
+}
+
+div.add-comment-section
+{
+    border: 2px solid darkslateblue;
+    width: 70%; 
+}
+
+.button-style{
+    padding: 8px 15px;
+    background-color: darkslateblue;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px; /* Consistent font size with the input field */
+    transition: 0.3s;
+}
+
+
 .center-content {
     width: 70%; 
     margin: 0 auto; 
@@ -15,7 +40,7 @@
 }
 
 .post-content {
-    width: 50%;
+    width: 70%;
     padding: 15px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;

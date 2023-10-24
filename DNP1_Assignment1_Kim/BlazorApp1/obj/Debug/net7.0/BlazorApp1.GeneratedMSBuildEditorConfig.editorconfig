@@ -9,57 +9,57 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BlazorApp1
 build_property.RootNamespace = BlazorApp1
-build_property.ProjectDir = C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\
+build_property.ProjectDir = C:\Users\karee\OneDrive\Desktop\Git Assignment_1 DNP1\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Kim\Desktop\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1
+build_property.MSBuildProjectDirectory = C:\Users\karee\OneDrive\Desktop\Git Assignment_1 DNP1\DNP1_Assignment_1_Kim\DNP1_Assignment1_Kim\BlazorApp1
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/App.razor]
+[C:/Users/karee/OneDrive/Desktop/Git Assignment_1 DNP1/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/_Imports.razor]
+[C:/Users/karee/OneDrive/Desktop/Git Assignment_1 DNP1/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/CreatePostPage.razor]
+[C:/Users/karee/OneDrive/Desktop/Git Assignment_1 DNP1/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/CreatePostPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlUG9zdFBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-va5ttcg79n
 
-[C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/CreateUserPage.razor]
+[C:/Users/karee/OneDrive/Desktop/Git Assignment_1 DNP1/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/CreateUserPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlVXNlclBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-k9i3ygf1vr
 
-[C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/Index.razor]
+[C:/Users/karee/OneDrive/Desktop/Git Assignment_1 DNP1/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-70cdui5b69
 
-[C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/LoginPage.razor]
+[C:/Users/karee/OneDrive/Desktop/Git Assignment_1 DNP1/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/LoginPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW5QYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-480z8q4hvn
 
-[C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/OnClickSeeSpecificPost.razor]
+[C:/Users/karee/OneDrive/Desktop/Git Assignment_1 DNP1/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/OnClickSeeSpecificPost.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT25DbGlja1NlZVNwZWNpZmljUG9zdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-1yoqemvvve
 
-[C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/PostMainPage.razor]
+[C:/Users/karee/OneDrive/Desktop/Git Assignment_1 DNP1/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/PostMainPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9zdE1haW5QYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-318081eyz9
 
-[C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Shared/MainLayout.razor]
+[C:/Users/karee/OneDrive/Desktop/Git Assignment_1 DNP1/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-45rkf8v3vv
 
-[C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Shared/NavMenu.razor]
+[C:/Users/karee/OneDrive/Desktop/Git Assignment_1 DNP1/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-b5wscdn8ts
 
-[C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/Error.cshtml]
+[C:/Users/karee/OneDrive/Desktop/Git Assignment_1 DNP1/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Kim/Desktop/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/_Host.cshtml]
+[C:/Users/karee/OneDrive/Desktop/Git Assignment_1 DNP1/DNP1_Assignment_1_Kim/DNP1_Assignment1_Kim/BlazorApp1/Pages/_Host.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

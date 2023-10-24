@@ -19,7 +19,8 @@
                 <Authorized>
                     <NavLink class="custom-nav-linkV2" href="">
                         <img src="UserIcon.png" alt="User Icon" class="login-image"/>
-                        @username
+                        @AuthenticationStateProvider.GetAuthenticationStateAsync().Result.User.Identity?.Name
+                        
                     </NavLink>
 
                     <button class="custom-nav-linkV2" @onclick="LogoutAsync">
@@ -87,6 +88,8 @@
         }
     }
 
+    
+    
     private async Task LogoutAsync()
     {
         try
